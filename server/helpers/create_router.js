@@ -68,19 +68,7 @@ const createRouter = function (collection) {
             res.json({ status: 500, error: err });
         });
     })
-    router.post("/reset",(req,res)=>{
-        const newData=req.body
-        collection
-        .insertMany(newData)
-        .then((result) => {
-          res.json(result.ops[0])
-        })
-        .catch((err) => {
-          console.error(err);
-          res.status(500);
-          res.json({ status: 500, error: err });
-        });
-    })
+    
 
 
 

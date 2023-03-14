@@ -1,14 +1,14 @@
-const baseUrl=("http://localhost:9000/api/enemies/")
+const baseUrl=("http://localhost:9000/api/store/")
 
-export const getEnemies=()=>{
+export const getItems=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
-export const getOneEnemy=(id)=>{
+export const getOneItem=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneEnemy=(enemy)=>{
+export const updateOneItem=(enemy)=>{
     return fetch(baseUrl+enemy._id,{
         method:'PUT',
         body:JSON.stringify(enemy),
@@ -16,6 +16,6 @@ export const updateOneEnemy=(enemy)=>{
     })
     .then(res=>res.json())
 }
-export const resetEnemies=()=>{
+export const resetStore=()=>{
     return fetch(baseUrl+"reset")
 }

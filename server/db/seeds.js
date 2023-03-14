@@ -225,7 +225,7 @@ db.enemies.insertMany([
             name:"Battle Harness",
             defense:25
         }
-    },
+    }
 ])
 db.log.insertMany([{
     messages:[{
