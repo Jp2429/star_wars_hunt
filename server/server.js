@@ -241,7 +241,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                     defense:25
                 }
             }])
-          .then(result=>res.json(result))
+            .then((result) => {
+                res.json(result.ops)
+              })
       })
     app.use("/api/enemies",enemyRouter)
     const inventoryCollection=db.collection("inventory")
@@ -260,7 +262,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                 }]
             }]
           )
-          .then(result=>res.json(result))
+          .then((result) => {
+            res.json(result.ops)
+          })
       })
     app.use("/api/inventory",inventoryRouter)
     const logCollection=db.collection("log")
@@ -276,7 +280,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                 }]
             }]
           )
-          .then(result=>res.json(result))
+          .then((result) => {
+            res.json(result.ops)
+          })
       })
     app.use("/api/log",logRouter)
     const bountyHunterCollection=db.collection("bounty_hunters")
@@ -496,7 +502,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                 }
             ]
           )
-          .then(result=>res.json(result))
+          .then((result) => {
+            res.json(result.ops)
+          })
       })
     app.use("/api/bountyHunters",bountyHunterRouter)
     const storeCollection=db.collection("store")
@@ -603,7 +611,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                 }
             ]
           )
-          .then(result=>res.json(result))
+          .then((result) => {
+            res.json(result.ops)
+          })
       })
     app.use("/api/store",storeRouter)
     const partyCollection=db.collection("party")
@@ -619,7 +629,9 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                 }
             ]
           )
-          .then(result=>res.json(result))
+          .then((result) => {
+            res.json(result.ops)
+          })
       })
     app.use("/api/party",partyRouter)
 

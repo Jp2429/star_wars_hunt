@@ -18,4 +18,6 @@ export const updateOneEnemy=(enemy)=>{
 }
 export const resetEnemies=()=>{
     return fetch(baseUrl+"reset")
+    .then(res=>res.json())
 }
+

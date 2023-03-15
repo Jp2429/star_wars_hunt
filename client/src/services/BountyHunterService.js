@@ -1,34 +1,34 @@
-const baseUrl=("http://localhost:9000/api/store/")
+const baseUrl=("http://localhost:9000/api/bountyHunters/")
 
-export const getItems=()=>{
+export const getHunters=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
-export const getOneItem=(id)=>{
+export const getOneHunter=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneItem=(item)=>{
-    return fetch(baseUrl+item._id,{
+export const updateOneHunter=(hunter)=>{
+    return fetch(baseUrl+hunter._id,{
         method:'PUT',
-        body:JSON.stringify(item),
+        body:JSON.stringify(hunter),
         headers:{'Content-Type':'application/json'}
     })
     .then(res=>res.json())
 }
-export const resetStore=()=>{
+export const resetHunters=()=>{
     return fetch(baseUrl+"reset")
     .then(res=>res.json())
 }
-export const postItem=(item)=>{
+export const postHunter=(hunter)=>{
     return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify(item),
+        body: JSON.stringify(hunter),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.json())
 }
-export const deleteItem=(id)=>{
+export const deleteHunter=(id)=>{
     return fetch(baseURL + id, {
         method: 'DELETE'
     })

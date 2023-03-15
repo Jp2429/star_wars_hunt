@@ -1,34 +1,34 @@
-const baseUrl=("http://localhost:9000/api/store/")
+const baseUrl=("http://localhost:9000/api/party/")
 
-export const getItems=()=>{
+export const getMembers=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
-export const getOneItem=(id)=>{
+export const getOneMember=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneItem=(item)=>{
-    return fetch(baseUrl+item._id,{
+export const updateOneItem=(member)=>{
+    return fetch(baseUrl+member._id,{
         method:'PUT',
-        body:JSON.stringify(item),
+        body:JSON.stringify(member),
         headers:{'Content-Type':'application/json'}
     })
     .then(res=>res.json())
 }
-export const resetStore=()=>{
+export const resetParty=()=>{
     return fetch(baseUrl+"reset")
     .then(res=>res.json())
 }
-export const postItem=(item)=>{
+export const postMember=(member)=>{
     return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify(item),
+        body: JSON.stringify(member),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.json())
 }
-export const deleteItem=(id)=>{
+export const deleteMember=(id)=>{
     return fetch(baseURL + id, {
         method: 'DELETE'
     })

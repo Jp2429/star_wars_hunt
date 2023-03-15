@@ -1,6 +1,6 @@
-const baseUrl=("http://localhost:9000/api/store/")
+const baseUrl=("http://localhost:9000/api/log/")
 
-export const getItems=()=>{
+export const getMessages=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
@@ -8,27 +8,27 @@ export const getOneItem=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneItem=(item)=>{
-    return fetch(baseUrl+item._id,{
+export const updateOneMessage=(message)=>{
+    return fetch(baseUrl+message._id,{
         method:'PUT',
-        body:JSON.stringify(item),
+        body:JSON.stringify(message),
         headers:{'Content-Type':'application/json'}
     })
     .then(res=>res.json())
 }
-export const resetStore=()=>{
+export const resetLog=()=>{
     return fetch(baseUrl+"reset")
     .then(res=>res.json())
 }
-export const postItem=(item)=>{
+export const postMessage=(message)=>{
     return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify(item),
+        body: JSON.stringify(message),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.json())
 }
-export const deleteItem=(id)=>{
+export const deleteMessage=(id)=>{
     return fetch(baseURL + id, {
         method: 'DELETE'
     })

@@ -1,4 +1,4 @@
-const baseUrl=("http://localhost:9000/api/store/")
+const baseUrl=("http://localhost:9000/api/inventory/")
 
 export const getItems=()=>{
     return fetch(baseUrl)
@@ -16,7 +16,7 @@ export const updateOneItem=(item)=>{
     })
     .then(res=>res.json())
 }
-export const resetStore=()=>{
+export const resetInventory=()=>{
     return fetch(baseUrl+"reset")
     .then(res=>res.json())
 }
