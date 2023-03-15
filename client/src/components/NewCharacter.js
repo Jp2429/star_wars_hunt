@@ -122,6 +122,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
 
         setSelectedSpecies ("")
         setSelectedWeapon ("")
+        window.location.href = "/main-menu"
 
         }
 

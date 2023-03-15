@@ -625,11 +625,15 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
           })
       })
     app.use("/api/store",storeRouter)
+
     const partyCollection=db.collection("party")
     const partyRouter=createRouter(partyCollection)
     partyRouter.post("/reset",(req,res)=>{
         partyCollection
           .deleteMany({})
+          .then(result => {
+            res.json(result)
+          })
  
       })
     app.use("/api/party",partyRouter)

@@ -17,7 +17,7 @@ export const updateOneStoreItem=(item)=>{
     .then(res=>res.json())
 }
 export const resetStore=()=>{
-    return fetch(baseUrl+"reset")
+    return fetch(baseUrl+"reset", {method:'POST'})
     .then(res=>res.json())
 }
 export const postStoreItem=(item)=>{

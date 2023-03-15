@@ -17,8 +17,13 @@ export const updateOneMember=(member)=>{
     .then(res=>res.json())
 }
 export const resetParty=()=>{
-    return fetch(baseUrl+"reset")
+    return fetch(baseUrl+"reset", {method:'POST'})
     .then(res=>res.json())
+}
+export const deleteParty=()=>{
+    return fetch(baseUrl+"reset",{
+        method:'DELETE'
+    })
 }
 export const postMember=(member)=>{
     return fetch(baseUrl, {

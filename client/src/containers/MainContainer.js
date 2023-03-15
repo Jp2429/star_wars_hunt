@@ -5,7 +5,7 @@ import MainMenu from '../components/MainMenu'
 import NewCharacter from '../components/NewCharacter'
 import Start from '../components/Start'
 import {getEnemies, getOneEnemy, updateOneEnemy, resetEnemies} from "../services/EnemyService"
-import {getMembers, getOneMember, updateOneMember, deleteMember ,resetParty, postMember} from "../services/PartyService"
+import {getMembers, getOneMember, updateOneMember, deleteMember ,resetParty,deleteParty, postMember} from "../services/PartyService"
 import {getMessages, getOneMessage, updateOneMessage, resetLog, postMessage, deleteMessage } from "../services/LogService"
 import {getStoreItems, getOneStoreItem, updateOneStoreItem, resetStore, postStoreItem, deleteStoreItem} from "../services/StoreService"
 import {getItems, getOneItem, updateOneItem, resetInventory, postItem, deleteItem} from "../services/InventoryService"
@@ -55,9 +55,14 @@ const MainContainer = () =>{
         resetInventory()
         resetLog()
         resetParty()
+        .then(
+            postMember(player)
+            .then(playerData => setPartyMembers([...listOfPartyMembers, playerData]))
+        )
+        // deleteParty()
         resetStore()
-        postMember(player)
-        .then(playerData => setPartyMembers([...listOfPartyMembers, playerData]))
+        
+
         // updateOneMember()
         // const updatedPlayerIndex = listOfPartyMembers.findIndex(playerItem=>playerItem._id === player._id)
         // const updatedListOfPartyMembers = [...listOfPartyMembers]
