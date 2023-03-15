@@ -21,7 +21,7 @@ export const resetHunters=()=>{
     .then(res=>res.json())
 }
 export const postHunter=(hunter)=>{
-    return fetch(baseURL, {
+    return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(hunter),
         headers: { 'Content-Type': 'application/json' }
@@ -29,7 +29,7 @@ export const postHunter=(hunter)=>{
     .then(res => res.json())
 }
 export const deleteHunter=(id)=>{
-    return fetch(baseURL + id, {
+    return fetch(baseUrl + id, {
         method: 'DELETE'
     })
 }

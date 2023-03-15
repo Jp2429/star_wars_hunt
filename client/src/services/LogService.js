@@ -4,7 +4,7 @@ export const getMessages=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
-export const getOneItem=(id)=>{
+export const getOneMessage=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
@@ -21,7 +21,7 @@ export const resetLog=()=>{
     .then(res=>res.json())
 }
 export const postMessage=(message)=>{
-    return fetch(baseURL, {
+    return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(message),
         headers: { 'Content-Type': 'application/json' }
@@ -29,7 +29,7 @@ export const postMessage=(message)=>{
     .then(res => res.json())
 }
 export const deleteMessage=(id)=>{
-    return fetch(baseURL + id, {
+    return fetch(baseUrl + id, {
         method: 'DELETE'
     })
 }

@@ -243,6 +243,7 @@ db.inventory.insertMany([{
 db.bounty_hunters.insertMany([
     {
         name:"Dash Halcyon",
+        species:"Human",
         health:250,
         action_points:20,
         credits:1500,
@@ -266,6 +267,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Rix Terrik",
+        species:"Human",
         health:375,
         action_points:20,
         credits:2500,
@@ -289,6 +291,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Chikoob Bomu",
+        species:"Rodian",
         health:500,
         action_points:20,
         credits:4000,
@@ -312,6 +315,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Do'seca",
+        species:"Twi'lek",
         health:250,
         action_points:20,
         credits:1500,
@@ -335,6 +339,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Cadan Keeg",
+        species:"Duros",
         health:375,
         action_points:20,
         credits:2500,
@@ -358,6 +363,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Pekt",
+        species:"Trandoshan",
         health:500,
         action_points:20,
         credits:4000,
@@ -381,6 +387,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Reine Dara",
+        species:"Human",
         health:150,
         action_points:20,
         credits:1500,
@@ -404,6 +411,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"Kenneth Darwin",
+        species:"Human",
         health:275,
         action_points:20,
         credits:2500,
@@ -427,6 +435,7 @@ db.bounty_hunters.insertMany([
     },
     {
         name:"HK-47",
+        species:"Droid",
         health:500,
         action_points:20,
         credits:5000,
@@ -549,6 +558,27 @@ db.store.insertMany([
 
 db.party.insertMany([
     {
-
+        name:null,
+        species:null,
+        health:150,
+        action_points:20,
+        credits:1500,
+        level:1,
+        xp_to_level_up:100,
+        cur_xp:0,
+        is_player:true,
+        stim_count:0,
+        weapon:{
+            name:null,
+            damage:55,
+            chance_to_hit:75,
+            cost:550,
+            ability:"Snipe"
+        },
+        armour:{
+            name:"Fatigues",
+            cost:250,
+            defense:0
+        }
     }
 ])

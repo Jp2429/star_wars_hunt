@@ -8,7 +8,7 @@ export const getOneMember=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneItem=(member)=>{
+export const updateOneMember=(member)=>{
     return fetch(baseUrl+member._id,{
         method:'PUT',
         body:JSON.stringify(member),
@@ -21,7 +21,7 @@ export const resetParty=()=>{
     .then(res=>res.json())
 }
 export const postMember=(member)=>{
-    return fetch(baseURL, {
+    return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(member),
         headers: { 'Content-Type': 'application/json' }
@@ -29,7 +29,7 @@ export const postMember=(member)=>{
     .then(res => res.json())
 }
 export const deleteMember=(id)=>{
-    return fetch(baseURL + id, {
+    return fetch(baseUrl + id, {
         method: 'DELETE'
     })
 }

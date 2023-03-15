@@ -21,7 +21,7 @@ export const resetInventory=()=>{
     .then(res=>res.json())
 }
 export const postItem=(item)=>{
-    return fetch(baseURL, {
+    return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(item),
         headers: { 'Content-Type': 'application/json' }
@@ -29,7 +29,7 @@ export const postItem=(item)=>{
     .then(res => res.json())
 }
 export const deleteItem=(id)=>{
-    return fetch(baseURL + id, {
+    return fetch(baseUrl + id, {
         method: 'DELETE'
     })
 }

@@ -1,14 +1,14 @@
 const baseUrl=("http://localhost:9000/api/store/")
 
-export const getItems=()=>{
+export const getStoreItems=()=>{
     return fetch(baseUrl)
     .then(res=>res.json())
 }
-export const getOneItem=(id)=>{
+export const getOneStoreItem=(id)=>{
     return fetch(baseUrl+id)
     .then(res=>res.json())
 }
-export const updateOneItem=(item)=>{
+export const updateOneStoreItem=(item)=>{
     return fetch(baseUrl+item._id,{
         method:'PUT',
         body:JSON.stringify(item),
@@ -20,16 +20,16 @@ export const resetStore=()=>{
     return fetch(baseUrl+"reset")
     .then(res=>res.json())
 }
-export const postItem=(item)=>{
-    return fetch(baseURL, {
+export const postStoreItem=(item)=>{
+    return fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(item),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.json())
 }
-export const deleteItem=(id)=>{
-    return fetch(baseURL + id, {
+export const deleteStoreItem=(id)=>{
+    return fetch(baseUrl + id, {
         method: 'DELETE'
     })
 }
