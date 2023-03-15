@@ -47,12 +47,33 @@ const MainContainer = () =>{
         })
 
     },[])
+
+    const createPlayer = (player) =>{
+
+        resetEnemies()
+        resetHunters()
+        resetInventory()
+        resetLog()
+        resetParty()
+        resetStore()
+        postMember(player)
+        .then(playerData => setPartyMembers([...listOfPartyMembers, playerData]))
+        // updateOneMember()
+        // const updatedPlayerIndex = listOfPartyMembers.findIndex(playerItem=>playerItem._id === player._id)
+        // const updatedListOfPartyMembers = [...listOfPartyMembers]
+        // updatedListOfPartyMembers[updatedPlayerIndex] = player
+        // setPartyMembers(updatedListOfPartyMembers)
+
+    }
+
+
+    
     return(
         <Router>
             <Header/>
             <Routes>
-                <Route path='/' element={<Start  listOfPartyMembers = {listOfPartyMembers}/>}/>
-                <Route path='/new-character' element={<NewCharacter/>}/>
+                <Route path='/' element={<Start  listOfPartyMembers = {listOfPartyMembers} />}/>
+                <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers}/>}/>
                 <Route path='/main-menu' element={<MainMenu/>}/>
             </Routes>
         </Router>

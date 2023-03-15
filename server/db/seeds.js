@@ -556,29 +556,3 @@ db.store.insertMany([
     }
 ])
 
-db.party.insertMany([
-    {
-        name:null,
-        species:null,
-        health:150,
-        action_points:20,
-        credits:1500,
-        level:1,
-        xp_to_level_up:100,
-        cur_xp:0,
-        is_player:true,
-        stim_count:0,
-        weapon:{
-            name:null,
-            damage:55,
-            chance_to_hit:75,
-            cost:550,
-            ability:"Snipe"
-        },
-        armour:{
-            name:"Fatigues",
-            cost:250,
-            defense:0
-        }
-    }
-])

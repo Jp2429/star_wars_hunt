@@ -10,8 +10,7 @@ const Start = ({listOfPartyMembers}) =>{
     return(
         <div>
             <a href='/new-character'> New Character </a>
-            {/* {listOfPartyMembers[0].name == null?<a href='/main-menu'> Load Character</a>:<p>You do not currently have a save</p>} */}
-            {playerData.name != null?<a href='/main-menu'> Load Character</a>:<p>You do not currently have a save</p>}
+            {playerData.name != null?<a href='/main-menu'> Load Character</a> : <p>You do not currently have a save</p>}
         </div>
     )
     }
