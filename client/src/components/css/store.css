@@ -1,4 +1,4 @@
-#bounty-hunters{
+#store-inventory{
     display:flex;
     flex-direction: column;
     height:300px;
@@ -8,7 +8,7 @@
     padding:5px;
     border:2px solid black;
 }
-#party{
+#player-inventory{
     display:flex;
     flex-direction: column;
     height:300px;
@@ -19,17 +19,17 @@
     border:2px solid black;
 
 }
-#bh{
+#armours{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#members{
+#weapons{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#bh-party-div{
+#inventories{
     display:flex;
     flex-direction: row;
     justify-content: center;

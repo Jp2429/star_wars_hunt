@@ -1,6 +1,6 @@
 import './css/cantina.css'
 
-const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToParty,updatePlayer,updateLog})=>{
+const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToParty,updatePlayer,updateLog,removeFromParty,addToAvailable})=>{
     const onHireClick=(hunter)=>{
         const idToDelete=hunter._id
         const player=partyMembers.filter(playerData=>playerData.is_player)
@@ -13,6 +13,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 name:player[0].name,
                 species:player[0].species,
                 health:player[0].health,
+                max_health:player[0].max_health,
                 action_points:player[0].action_points,
                 credits:newCredits,
                 level:player[0].level,
@@ -45,9 +46,61 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
         
     }
     const onFireClick=(member)=>{
-        
+        const idToDelete=member._id
+        removeFromParty(idToDelete)
+        addToAvailable(member)
+        const newMessage={message:member.name+" has been dismissed"}
+        const newMessages=[...messages[0].messages]
+        newMessages.push(newMessage)
+        const newLogMessage={
+            _id:messages[0]._id,
+            messages:newMessages
+        }
+        updateLog(newLogMessage)
     }
 
+    const onHealClick=()=>{
+        const player=partyMembers.find(playerData=>playerData.is_player)
+        if(player.health<player.max_health && player.credits>=50){
+            
+            const newCredits=player.credits-50
+            const updatedPlayer={
+                _id:player._id,
+                name:player.name,
+                species:player.species,
+                health:player.max_health,
+                max_health:player.max_health,
+                action_points:player.action_points,
+                credits:newCredits,
+                level:player.level,
+                xp_to_level_up:player.xp_to_level_up,
+                cur_xp:player.cur_xp,
+                is_player:player.is_player,
+                stim_count:player.stim_count,
+                weapon:player.weapon,
+                armour:player.armour
+            }
+            updatePlayer(updatedPlayer)
+            const newMessage={message:"You have healed yourself"}
+            const newMessages=[...messages[0].messages]
+            newMessages.push(newMessage)
+            const newLogMessage={
+                _id:messages[0]._id,
+                messages:newMessages
+            }
+            updateLog(newLogMessage)
+        }else{
+            const newMessage={message:"You cannot be healed, either you are at max health or you cannot afford our services"}
+            const newMessages=[...messages[0].messages]
+            newMessages.push(newMessage)
+            const newLogMessage={
+                _id:messages[0]._id,
+                messages:newMessages
+            }
+            updateLog(newLogMessage)
+        }
+        
+    }
 
     const filterPlayer=partyMembers.find(player=>player.is_player)
 
@@ -89,7 +142,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 </div>
             </div>
             <div id="heal-and-credits">
-                <button>Heal</button>
+                <button onClick={onHealClick}>Heal</button>
                 {filterPlayer?<p>Credits: {filterPlayer.credits}</p>:null}
             </div>
             <div id="log">

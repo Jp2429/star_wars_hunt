@@ -108,9 +108,19 @@ const MainContainer = () =>{
             setBountyHunters(listOfBountyHunters.filter(hunter => hunter._id !== id))
           })
     }
+    const removeFromParty=(id)=>{
+        deleteMember(id)
+        .then(()=>{
+            setPartyMembers(listOfPartyMembers.filter(member=>member._id !== id))
+        })
+    }
     const addToParty=(member)=>{
         postMember(member)
         .then(memberData=>setPartyMembers(listOfPartyMembers => [...listOfPartyMembers,memberData]))
+    }
+    const addToAvailable=(hunter)=>{
+        postHunter(hunter)
+        .then(hunterData=>setBountyHunters(listOfBountyHunters=>[...listOfBountyHunters,hunterData]))
     }
     const updatePlayer=(player)=>{
         updateOneMember(player)
@@ -163,8 +173,8 @@ const MainContainer = () =>{
                 <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers} updateStartingEquipment={updateStartingEquipment}/>}/>
                 <Route path='/main-menu' element={<MainMenu/>}/>
                 <Route path='/missions' element={<Missions/>}/>
-                <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog}/>}/>
-                <Route path='/store' element={<Store/>}/>
+                <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog} removeFromParty={removeFromParty} addToAvailable={addToAvailable}/>}/>
+                <Route path='/store' element={<Store storeInventory={listOfStoreInventory} inventory={listOfPlayerItems} messages={listOfLogMessages} partyMembers={listOfPartyMembers}/>}/>
                 <Route path='/inventory' element={<Inventory/>}/>
             </Routes>
         </Router>

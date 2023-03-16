@@ -6,9 +6,10 @@ const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}
     const [formData, setFormData] = useState({
         name:"",
         species:"",
-        health:150,
+        health:250,
+        max_health:250,
         action_points:20,
-        credits:1500,
+        credits:3500,
         level:1,
         xp_to_level_up:100,
         cur_xp:0,
@@ -38,10 +39,8 @@ const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}
     }
 
     const onSpeciesChange = (evt) => {
-        // const targetPlayer = listOfPartyMembers.filter(player => player.is_player === true)
         let currentSpecies = evt.target.value
         const newFormData = Object.assign({}, formData)
-        // newFormData[formData._id] = targetPlayer._id
         newFormData[evt.target.name] = currentSpecies
         setSelectedSpecies (currentSpecies)
         setFormData(newFormData)
@@ -98,9 +97,10 @@ const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}
             setFormData({        
                 name:"",
                 species:"",
-                health:150,
+                health:250,
+                max_health:250,
                 action_points:20,
-                credits:1500,
+                credits:3500,
                 level:1,
                 xp_to_level_up:100,
                 cur_xp:0,
