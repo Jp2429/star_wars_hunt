@@ -227,19 +227,8 @@ db.enemies.insertMany([
         }
     }
 ])
-db.log.insertMany([{
-    messages:[{
 
-    }]
-}])
-db.inventory.insertMany([{
-    weapons:[{
 
-    }],
-    armours:[{
-
-    }]
-}])
 db.bounty_hunters.insertMany([
     {
         name:"Dash Halcyon",

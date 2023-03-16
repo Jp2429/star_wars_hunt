@@ -250,39 +250,20 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
     const inventoryRouter=createRouter(inventoryCollection)
     inventoryRouter.post("/reset",(req,res)=>{
         inventoryCollection
-          .deleteMany({})
-        inventoryCollection
-          .insertMany(
-            [{
-                weapons:[{
-            
-                }],
-                armours:[{
-            
-                }]
-            }]
-          )
-          .then((result) => {
-            res.json(result.ops)
-          })
+        .deleteMany({})
+        .then(result => {
+          res.json(result)
+        })
       })
     app.use("/api/inventory",inventoryRouter)
     const logCollection=db.collection("log")
     const logRouter=createRouter(logCollection)
     logRouter.post("/reset",(req,res)=>{
         logCollection
-          .deleteMany({})
-        logCollection
-          .insertMany(
-            [{
-                messages:[{
-            
-                }]
-            }]
-          )
-          .then((result) => {
-            res.json(result.ops)
-          })
+        .deleteMany({})
+        .then(result => {
+          res.json(result)
+        })
       })
     app.use("/api/log",logRouter)
     const bountyHunterCollection=db.collection("bounty_hunters")

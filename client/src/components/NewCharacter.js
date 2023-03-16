@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
+const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}) =>{
 
     const [formData, setFormData] = useState({
         name:"",
@@ -119,7 +119,6 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
                     defense:0
                 }
         })
-
         setSelectedSpecies ("")
         setSelectedWeapon ("")
         window.location.href = "/main-menu"
