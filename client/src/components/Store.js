@@ -9,13 +9,13 @@ const Store=({storeInventory,inventory,messages,partyMembers})=>{
             const getShopWeapons=storeInventory.map((weaponData)=>{
                 return weaponData.weapons
            })
-           console.log(getShopWeapons[0])
-           let newWeapons = getShopWeapons.filter(weaponData=>weaponData.name!==weapon.name)
+           console.log("whole shop",getShopWeapons)
+           let newWeapons = getShopWeapons[0].filter(weaponData=>weaponData.name!==weapon.name)
         //    newWeapons=newWeapons[0].weapons
-           console.log(newWeapons)
+           console.log("This should be 8",newWeapons)
            const newStore={
                 _id:storeInventory[0]._id,
-                weapons:newWeapons[0],
+                weapons:newWeapons,
                 armours:storeInventory[0].armours
            }
            console.log("Store: ",newStore)
@@ -113,7 +113,7 @@ const Store=({storeInventory,inventory,messages,partyMembers})=>{
             <div id="inventories">
                 <div id="store-inventory">
                     {storeWeaponData}
-                    {storeArmourData}
+                    {/* {storeArmourData} */}
                 </div>
                 <div id="player-inventory">
                     {playerWeaponData}
