@@ -1,36 +1,40 @@
 import { updateOneStoreItem } from '../services/StoreService'
 import './css/store.css'
 
-const Store=({storeInventory,inventory,messages,partyMembers})=>{
+const Store=({storeInventory,inventory,messages,partyMembers, updateStore, updateInventory})=>{
 
 
     const onWeaponBuyClick=(weapon)=>{
+        console.log(inventory)
         if(player.credits>=weapon.cost){
             const getShopWeapons=storeInventory.map((weaponData)=>{
                 return weaponData.weapons
            })
-           console.log("whole shop",getShopWeapons)
            let newWeapons = getShopWeapons[0].filter(weaponData=>weaponData.name!==weapon.name)
-        //    newWeapons=newWeapons[0].weapons
-           console.log("This should be 8",newWeapons)
+
            const newStore={
                 _id:storeInventory[0]._id,
                 weapons:newWeapons,
                 armours:storeInventory[0].armours
            }
-           console.log("Store: ",newStore)
-        //    updateStore(newStore)
+
+           updateStore(newStore)
 
            const newPlayerWeapons=inventory.map((weaponData)=>{
                 return weaponData.weapons
            })
-           newPlayerWeapons.push(weapon)
+           const weaponObject={
+            weapon:weapon
+           }
+           console.log(inventory[0].armours)
+           newPlayerWeapons.push("sdfvdfs",weaponObject)
+           console.log(newPlayerWeapons)
            const newInventory={
                 _id:inventory[0]._id,
                 weapons:newPlayerWeapons,
                 armours:inventory[0].armours
            }
-           console.log("Inventory: ",newInventory)
+           updateInventory(newInventory)
         }
     }
 
@@ -40,8 +44,10 @@ const Store=({storeInventory,inventory,messages,partyMembers})=>{
         return items.weapons.map((weapon)=>{
             return(
                 <div className="weapons">
-                    <p>{weapon.name}</p>
+                    <p>Weapon: {weapon.name}</p>
+                    <p>Cost: {weapon.cost} credits</p>
                     <button onClick={()=>onWeaponBuyClick(weapon)}>Buy</button>
+                    <hr></hr>
                 </div>
             )
         })
@@ -51,8 +57,10 @@ const Store=({storeInventory,inventory,messages,partyMembers})=>{
         return items.armours.map((armour)=>{
             return(
                 <div className="armours">
-                    <p>{armour.name}</p>
+                    <p>Armour: {armour.name}</p>
+                    <p>Cost: {armour.cost} credits</p>
                     <button>Buy</button>
+                    <hr></hr>
                 </div>
             )
         })
@@ -113,7 +121,7 @@ const Store=({storeInventory,inventory,messages,partyMembers})=>{
             <div id="inventories">
                 <div id="store-inventory">
                     {storeWeaponData}
-                    {/* {storeArmourData} */}
+                    {storeArmourData}
                 </div>
                 <div id="player-inventory">
                     {playerWeaponData}

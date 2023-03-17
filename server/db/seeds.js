@@ -447,6 +447,140 @@ db.bounty_hunters.insertMany([
         }
     }
 ])
+db.store_weapons.insertMany([
+    {
+        weapon:{
+            name:"WESTAR-34 Blaster Pistol",
+            damage:40,
+            chance_to_hit:60,
+            cost:1500,
+            ability:"Flurry"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Beryars MK-3 Pistol",
+            damage:60,
+            chance_to_hit:60,
+            cost:5000,
+            ability:"Flurry"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Black Nebula Heavy Blaster",
+            damage:75,
+            chance_to_hit:70,
+            cost:7000,
+            ability:"Flurry"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"CD-35 Blaster Rifle",
+            damage:50,
+            chance_to_hit:60,
+            cost:2000,
+            ability:"Burst"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Corellian K5 Blaster Rifle",
+            damage:65,
+            chance_to_hit:65,
+            cost:5500,
+            ability:"Burst"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"DLA-13 Heavy Blaster Rifle",
+            damage:85,
+            chance_to_hit:50,
+            cost:7500,
+            ability:"Burst"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Beryars MK-3 Sniper Rifle",
+            damage:70,
+            chance_to_hit:70,
+            cost:2500,
+            ability:"Snipe"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Firestorm HZ-77 Sniper Rifle",
+            damage:85,
+            chance_to_hit:80,
+            cost:6500,
+            ability:"Snipe"
+        }
+        
+    },
+    {
+        weapon:{
+            name:"Amban JP Blaster Rifle",
+            damage:100,
+            chance_to_hit:90,
+            cost:10000,
+            ability:"Snipe"
+        }
+        
+    }
+])
+db.store_armours.insertMany([
+    {
+        armour:{
+            name:"Headhunter",
+            cost:1000,
+            defense:10
+        }
+        
+    },
+    {
+        armour:{
+            name:"Durasteel",
+            cost:2500,
+            defense:15
+        }
+        
+    },
+    {
+        armour:{
+            name:"Freelance Hunter",
+            cost:5000,
+            defense:20
+        }
+        
+    },
+    {
+        armour:{
+            name:"Cybernetic Pauldrons",
+            cost:7500,
+            defense:25
+        }
+        
+    },
+    {
+        armour:{
+            name:"Beskar",
+            cost:10000,
+            defense:30
+        }
+        
+    }
+])
 
 db.store.insertMany([
     {

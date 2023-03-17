@@ -616,6 +616,186 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
       })
     app.use("/api/store",storeRouter)
 
+    const storeWeaponsCollection=db.collection("store_weapons")
+    const storeWeaponsRouter=createRouter(storeWeaponsCollection)
+    storeWeaponsRouter.post("/reset",(req,res)=>{
+        storeWeaponsCollection
+            .deleteMany({})
+        storeWeaponsCollection
+            .insertMany([
+                {
+                    weapon:{
+                        name:"WESTAR-34 Blaster Pistol",
+                        damage:40,
+                        chance_to_hit:60,
+                        cost:1500,
+                        ability:"Flurry"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Beryars MK-3 Pistol",
+                        damage:60,
+                        chance_to_hit:60,
+                        cost:5000,
+                        ability:"Flurry"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Black Nebula Heavy Blaster",
+                        damage:75,
+                        chance_to_hit:70,
+                        cost:7000,
+                        ability:"Flurry"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"CD-35 Blaster Rifle",
+                        damage:50,
+                        chance_to_hit:60,
+                        cost:2000,
+                        ability:"Burst"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Corellian K5 Blaster Rifle",
+                        damage:65,
+                        chance_to_hit:65,
+                        cost:5500,
+                        ability:"Burst"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"DLA-13 Heavy Blaster Rifle",
+                        damage:85,
+                        chance_to_hit:50,
+                        cost:7500,
+                        ability:"Burst"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Beryars MK-3 Sniper Rifle",
+                        damage:70,
+                        chance_to_hit:70,
+                        cost:2500,
+                        ability:"Snipe"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Firestorm HZ-77 Sniper Rifle",
+                        damage:85,
+                        chance_to_hit:80,
+                        cost:6500,
+                        ability:"Snipe"
+                    }
+                    
+                },
+                {
+                    weapon:{
+                        name:"Amban JP Blaster Rifle",
+                        damage:100,
+                        chance_to_hit:90,
+                        cost:10000,
+                        ability:"Snipe"
+                    }
+                    
+                }
+            ])
+            .then((result) => {
+                res.json(result.ops)
+              })
+    })
+    app.use("/api/store-weapons",storeWeaponsRouter)
+
+    const storeArmoursCollection=db.collection("store_armours")
+    const storeArmoursRouter=createRouter(storeArmoursCollection)
+    storeArmoursRouter.post("/reset",(req,res)=>{
+        storeArmoursCollection
+            .deleteMany({})
+        storeArmoursCollection
+            .insertMany([
+                {
+                    armour:{
+                        name:"Headhunter",
+                        cost:1000,
+                        defense:10
+                    }
+                    
+                },
+                {
+                    armour:{
+                        name:"Durasteel",
+                        cost:2500,
+                        defense:15
+                    }
+                    
+                },
+                {
+                    armour:{
+                        name:"Freelance Hunter",
+                        cost:5000,
+                        defense:20
+                    }
+                    
+                },
+                {
+                    armour:{
+                        name:"Cybernetic Pauldrons",
+                        cost:7500,
+                        defense:25
+                    }
+                    
+                },
+                {
+                    armour:{
+                        name:"Beskar",
+                        cost:10000,
+                        defense:30
+                    }
+                    
+                }
+            ])
+            .then((result) => {
+                res.json(result.ops)
+              })
+    })
+    app.use("/api/store-armours",storeArmoursRouter)
+
+    const weaponInventoryCollection=db.collection("weapons_inventory")
+    const weaponInventoryRouter=createRouter(weaponInventoryCollection)
+    weaponInventoryRouter.post("/reset",(req,res)=>{
+        weaponInventoryCollection
+        .deleteMany({})
+          .then(result => {
+            res.json(result)
+          })
+    })
+    app.use("/api/weapon-inventory",weaponInventoryRouter)
+
+    const armourInventoryCollection=db.collection("armours_inventory")
+    const armourInventoryRouter=createRouter(armourInventoryCollection)
+    armourInventoryRouter.post("/reset",(req,res)=>{
+        armourInventoryCollection
+        .deleteMany({})
+          .then(result => {
+            res.json(result)
+          })
+    })
+    app.use("/api/armour-inventory",armourInventoryRouter)
+
     const partyCollection=db.collection("party")
     const partyRouter=createRouter(partyCollection)
     partyRouter.post("/reset",(req,res)=>{

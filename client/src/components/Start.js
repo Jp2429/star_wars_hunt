@@ -1,5 +1,4 @@
 const Start = ({listOfPartyMembers}) =>{
-    console.log("This is the party",listOfPartyMembers)
     const playerData = listOfPartyMembers.filter((member => member.is_player = true))
     
     

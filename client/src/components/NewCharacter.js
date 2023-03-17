@@ -121,8 +121,12 @@ const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}
         })
         setSelectedSpecies ("")
         setSelectedWeapon ("")
-        window.location.href = "/main-menu"
+        
+        setTimeout(delayMove,2000)
 
+        }
+        const delayMove=()=>{
+            window.location.href = "/main-menu"
         }
 
 
