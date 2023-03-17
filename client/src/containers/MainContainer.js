@@ -142,6 +142,20 @@ const MainContainer = () =>{
             setStoreArmours(storeArmours.filter(item=>item._id!==id))
         })
     }
+    const removeFromWeaponInventory=(id)=>{
+        deleteWeapon(id)
+        .then(()=>{
+            setWeaponInventory(weaponInventory.filter(item=>item._id!==id))
+        })
+    }
+    const removeFromArmourInventory=(id)=>{
+        deleteArmour(id)
+        .then(()=>{
+            setArmourInventory(armourInventory.filter(item=>item._id!==id))
+        })
+    }
+
+
     const addToParty=(member)=>{
         postMember(member)
         .then(memberData=>setPartyMembers(listOfPartyMembers => [...listOfPartyMembers,memberData]))
@@ -158,6 +172,16 @@ const MainContainer = () =>{
         postArmour(item)
         .then(armourData=>setArmourInventory(armourInventory=>[...armourInventory,armourData]))
     }
+    const addToStoreWeapons=(item)=>{
+        postStoreWeapon(item)
+        .then(storeWeaponData=>setStoreWeapons(storeWeapons=>[...storeWeapons,storeWeaponData]))
+    }
+    const addToStoreArmours=(item)=>{
+        postStoreArmour(item)
+        .then(storeArmourData=>setStoreArmours(storeArmours=>[...storeArmours,storeArmourData]))
+    }
+
+
     const updatePlayer=(player)=>{
         updateOneMember(player)
         const updatedPlayerIndex=listOfPartyMembers.findIndex(playerData=>playerData._id===player._id)
@@ -182,8 +206,11 @@ const MainContainer = () =>{
                 <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers} />}/>
                 <Route path='/main-menu' element={<MainMenu/>}/>
                 <Route path='/missions' element={<Missions/>}/>
+
                 <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog} removeFromParty={removeFromParty} addToAvailable={addToAvailable}/>}/>
-                <Route path='/store' element={<Store messages={listOfLogMessages} partyMembers={listOfPartyMembers} armourInventory={armourInventory} weaponInventory={weaponInventory} storeWeapons = {storeWeapons} storeArmours = {storeArmours} removeFromStoreWeapons={removeFromStoreWeapons} addToWeaponInventory={addToWeaponInventory} updatePlayer={updatePlayer} updateLog={updateLog} removeFromStoreArmour={removeFromStoreArmour} addToArmourInventory={addToArmourInventory}/>}/>
+
+                <Route path='/store' element={<Store messages={listOfLogMessages} partyMembers={listOfPartyMembers} armourInventory={armourInventory} weaponInventory={weaponInventory} storeWeapons = {storeWeapons} storeArmours = {storeArmours} removeFromStoreWeapons={removeFromStoreWeapons} addToWeaponInventory={addToWeaponInventory} updatePlayer={updatePlayer} updateLog={updateLog} removeFromStoreArmour={removeFromStoreArmour} addToArmourInventory={addToArmourInventory} removeFromWeaponInventory={removeFromWeaponInventory} addToStoreWeapons={addToStoreWeapons} removeFromArmourInventory={removeFromArmourInventory} addToStoreArmours={addToStoreArmours}/>}/>
+                
                 <Route path='/inventory' element={<Inventory/>}/>
             </Routes>
         </Router>

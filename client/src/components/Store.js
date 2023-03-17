@@ -1,7 +1,7 @@
 import { updateOneStoreItem } from '../services/StoreService'
 import './css/store.css'
 
-const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeapons, storeArmours,removeFromStoreWeapons,addToWeaponInventory, updatePlayer, updateLog,removeFromStoreArmour,addToArmourInventory})=>{
+const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeapons, storeArmours,removeFromStoreWeapons,addToWeaponInventory, updatePlayer, updateLog,removeFromStoreArmour,addToArmourInventory, removeFromWeaponInventory, addToStoreWeapons, removeFromArmourInventory, addToStoreArmours})=>{
 
 
     const onWeaponBuyClick=(item)=>{
@@ -27,7 +27,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have bought a: "+item.wepon.name }
+            const newMessage={message:"You have bought this item: "+item.weapon.name }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -36,7 +36,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"You could not buy that item " }
+            const newMessage={message:"You could not buy this item: "+item.weapon.name }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -47,6 +47,70 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         }
 
     }
+    const onStoreWeaponClick=(item)=>{
+        const newCredits =player.credits+item.weapon.cost
+        removeFromWeaponInventory(item._id)
+        addToStoreWeapons(item)
+
+        const updatedPlayer={
+            _id:player._id,
+            name:player.name,
+            species:player.species,
+            health:player.health,
+            max_health:player.max_health,
+            action_points:player.action_points,
+            credits:newCredits,
+            level:player.level,
+            xp_to_level_up:player.xp_to_level_up,
+            cur_xp:player.cur_xp,
+            is_player:player.is_player,
+            stim_count:player.stim_count,
+            weapon:player.weapon,
+            armour:player.armour
+        }
+        updatePlayer(updatedPlayer)
+        const newMessage={message:"You have sold this item: "+item.weapon.name }
+        const newMessages=[...messages[0].messages]
+        newMessages.push(newMessage)
+        const newLogMessage={
+            _id:messages[0]._id,
+            messages:newMessages
+        }
+        updateLog(newLogMessage)
+    }
+    const onStoreArmourClick=(item)=>{
+        const newCredits=player.credits+item.armour.cost
+        removeFromArmourInventory(item._id)
+        addToStoreArmours(item)
+
+        const updatedPlayer={
+            _id:player._id,
+            name:player.name,
+            species:player.species,
+            health:player.health,
+            max_health:player.max_health,
+            action_points:player.action_points,
+            credits:newCredits,
+            level:player.level,
+            xp_to_level_up:player.xp_to_level_up,
+            cur_xp:player.cur_xp,
+            is_player:player.is_player,
+            stim_count:player.stim_count,
+            weapon:player.weapon,
+            armour:player.armour
+        }
+        updatePlayer(updatedPlayer)
+
+        const newMessage={message:"You have sold this item: "+item.armour.name }
+        const newMessages=[...messages[0].messages]
+        newMessages.push(newMessage)
+        const newLogMessage={
+            _id:messages[0]._id,
+            messages:newMessages
+        }
+        updateLog(newLogMessage)
+    }
+
     const onArmourClick=(item)=>{
         if(player.credits>= item.armour.cost){
             const newCredits=player.credits-item.armour.cost
@@ -70,7 +134,16 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have bought a: "+item.wepon.name }
+            const newMessage={message:"You have bought this item: "+item.armour.name }
+            const newMessages=[...messages[0].messages]
+            newMessages.push(newMessage)
+            const newLogMessage={
+                _id:messages[0]._id,
+                messages:newMessages
+            }
+            updateLog(newLogMessage)
+        }else{
+            const newMessage={message:"You could not buy this item: "+item.armour.name }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -79,6 +152,37 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }
+    }
+    const onStimBuyClick=()=>{
+        const newCredits=player.credits-50
+        const newStimCount=player.stim_count+1
+
+        const updatedPlayer={
+            _id:player._id,
+            name:player.name,
+            species:player.species,
+            health:player.health,
+            max_health:player.max_health,
+            action_points:player.action_points,
+            credits:newCredits,
+            level:player.level,
+            xp_to_level_up:player.xp_to_level_up,
+            cur_xp:player.cur_xp,
+            is_player:player.is_player,
+            stim_count:newStimCount,
+            weapon:player.weapon,
+            armour:player.armour
+        }
+        updatePlayer(updatedPlayer)
+
+        const newMessage={message:"You have bought a Stim Pack "}
+        const newMessages=[...messages[0].messages]
+        newMessages.push(newMessage)
+        const newLogMessage={
+            _id:messages[0]._id,
+            messages:newMessages
+        }
+        updateLog(newLogMessage)
     }
 
     const player=partyMembers.find(player=>player.is_player)
@@ -107,7 +211,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
 
     const playerWeaponData=weaponInventory.map((weapon)=>{
             const isEquippedWeapon=()=>{
-                if(player.weapon==weapon.weapon){
+                if(player.weapon.name==weapon.weapon.name){
                     return true
                 }
                 return false
@@ -116,14 +220,15 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             return(
                 <div className="weapons">
                     <p>{weapon.weapon.name}</p>
-                    {isEquipped?<button>Sell</button>:null}
+                    {isEquipped?<p>Equipped</p>:null}
+                    {isEquipped?null:<button onClick={()=>onStoreWeaponClick(weapon)}>Sell</button>}
                 </div>
             )
         })
     
     const playerArmourData=armourInventory.map((armour)=>{
             const isEquippedArmour=()=>{
-                if(player.armour==armour.armour){
+                if(player.armour.name==armour.armour.name){
                     return true
                 }
                 return false
@@ -132,7 +237,8 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             return(
                 <div className="armours">
                     <p>{armour.armour.name}</p>
-                    {isEquipped?<button>Sell</button>:null}
+                    {isEquipped?<p>Equipped</p>:null}
+                    {isEquipped?null:<button onClick={()=>onStoreArmourClick(armour)}>Sell</button>}
                 </div>
             )
         })
@@ -162,7 +268,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 </div>
             </div>
             <div id="buy-stims">
-                <button>Buy Stim Pack</button>
+                <button onClick={onStimBuyClick}>Buy Stim Pack</button>
                 {filterPlayer?<p>Credits: {filterPlayer.credits}</p>:null}
             </div>
             <div id="log">
