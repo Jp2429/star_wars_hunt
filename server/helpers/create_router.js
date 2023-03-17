@@ -29,6 +29,7 @@ const createRouter = function (collection) {
   
   router.post('/', (req, res) => {
     const newData = req.body;
+    delete newData._id
     collection
       .insertOne(newData)
       .then((result) => {

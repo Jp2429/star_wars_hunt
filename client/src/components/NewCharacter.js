@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const NewCharacter = ({createPlayer, listOfPartyMembers,updateStartingEquipment}) =>{
+const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
 
     const [formData, setFormData] = useState({
         name:"",

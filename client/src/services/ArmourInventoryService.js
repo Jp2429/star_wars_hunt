@@ -16,9 +16,13 @@ export const updateOneArmour=(item)=>{
     })
     .then(res=>res.json())
 }
-export const resetArmourInventory=()=>{
-    return fetch(baseUrl+"reset", {method:'POST'})
+export const resetArmourInventory=(item)=>{
+    return fetch(baseUrl+"reset", {method:'POST',
+    body: JSON.stringify(item),
+    headers: { 'Content-Type': 'application/json' }
+})
     .then(res=>res.json())
+
 }
 export const postArmour=(item)=>{
     return fetch(baseUrl, {

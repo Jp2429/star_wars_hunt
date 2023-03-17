@@ -11,7 +11,6 @@ import Cantina from '../components/Cantina'
 import {getEnemies, getOneEnemy, updateOneEnemy, resetEnemies} from "../services/EnemyService"
 import {getMembers, getOneMember, updateOneMember, deleteMember ,resetParty,deleteParty, postMember} from "../services/PartyService"
 import {getMessages, getOneMessage, updateOneMessage, resetLog, postMessage, deleteMessage } from "../services/LogService"
-import {getStoreItems, getOneStoreItem, updateOneStoreItem, resetStore, postStoreItem, deleteStoreItem} from "../services/StoreService"
 import {getItems, getOneItem, updateOneItem, resetInventory, postItem, deleteItem} from "../services/InventoryService"
 import {getHunters, getOneHunter, updateOneHunter, resetHunters, postHunter, deleteHunter} from "../services/BountyHunterService"
 import { getArmours,getOneArmour,updateOneArmour,resetArmourInventory,deleteArmour,postArmour } from '../services/ArmourInventoryService'
@@ -56,7 +55,7 @@ const MainContainer = () =>{
         })
         getStoreWeapons()
         .then((allStoreWeapons)=>{
-            setStoreArmours(allStoreWeapons)
+            setStoreWeapons(allStoreWeapons)
         })
         getMessages()
         .then((allLogMessages) => {
@@ -76,26 +75,14 @@ const MainContainer = () =>{
     const createPlayer = (player) =>{
         const newWeapon=player.weapon
         const newArmour=player.armour
-        console.log("this is the wepon passed thorugh",newWeapon)
+       
         const newStoreWeapon={
             weapon:newWeapon
         }
         const newStoreArmour={
             armour:newArmour
         }
-        // const newItem=
-        //     {
-        //         weapons:[
-        //             {
-        //                 weapon:newWeapon
-        //             }
-        //         ],
-        //         armours:[
-        //             {
-        //                 armour:newArmour
-        //             }
-        //         ]
-        //     }
+       
         const newMessage="You have created a character: "+player.name
         const newLog=
         {
@@ -108,26 +95,21 @@ const MainContainer = () =>{
 
         resetEnemies()
         resetHunters()
-        resetWeaponInventory()
-        .then(
-            postWeapon(newStoreWeapon)
-            .then(itemData=>setArmourInventory([...armourInventory,newStoreWeapon]))
-        )
-        resetArmourInventory()
-        .then(
-            postArmour(newStoreArmour)
-            .then(itemData=>setArmourInventory([...armourInventory,newStoreArmour]))
-        )
-        resetLog()
-        .then(
-            postMessage(newLog)
-            .then(logData=>setLogMessages([...listOfLogMessages,newLog]))
-        )
-        resetParty()
-        .then(
-            postMember(player)
-            .then(playerData => setPartyMembers([...listOfPartyMembers, playerData]))
-        )
+        
+        
+        resetLog(newLog)
+        // .then(
+        //     postMessage(newLog)
+        //     .then(logData=>setLogMessages([...listOfLogMessages,newLog]))
+        // )
+        resetParty(player)
+       
+       
+        resetWeaponInventory(newStoreWeapon)
+            
+            
+        resetArmourInventory(newStoreArmour)
+            
         resetStoreArmour()
         resetStoreWeapons()
         
@@ -148,6 +130,18 @@ const MainContainer = () =>{
             setPartyMembers(listOfPartyMembers.filter(member=>member._id !== id))
         })
     }
+    const removeFromStoreWeapons=(id)=>{
+        deleteStoreWeapon(id)
+        .then(()=>{
+            setStoreWeapons(storeWeapons.filter(item=>item._id!==id))
+        })
+    }
+    const removeFromStoreArmour=(id)=>{
+        deleteStoreArmour(id)
+        .then(()=>{
+            setStoreArmours(storeArmours.filter(item=>item._id!==id))
+        })
+    }
     const addToParty=(member)=>{
         postMember(member)
         .then(memberData=>setPartyMembers(listOfPartyMembers => [...listOfPartyMembers,memberData]))
@@ -155,6 +149,14 @@ const MainContainer = () =>{
     const addToAvailable=(hunter)=>{
         postHunter(hunter)
         .then(hunterData=>setBountyHunters(listOfBountyHunters=>[...listOfBountyHunters,hunterData]))
+    }
+    const addToWeaponInventory=(item)=>{
+        postWeapon(item)
+        .then(itemData=>setWeaponInventory(weaponInventory=>[...weaponInventory,itemData]))
+    }
+    const addToArmourInventory=(item)=>{
+        postArmour(item)
+        .then(armourData=>setArmourInventory(armourInventory=>[...armourInventory,armourData]))
     }
     const updatePlayer=(player)=>{
         updateOneMember(player)
@@ -171,60 +173,17 @@ const MainContainer = () =>{
         setLogMessages(updatedListOfLogs)
     }
 
-    const updateStartingEquipment=(player)=>{
-        const newWeapon=player.weapon
-        const newArmour=player.armour
-
-        const newItem=[
-            {
-                _id:listOfPlayerItems[0]._id,
-                weapons:[
-                    {
-                        newWeapon
-                    }
-                ],
-                armours:[
-                    {
-                        newArmour
-                    }
-                ]
-            }
-        ]
-        updateOneItem(newItem)
-        const updatedItemIndex=listOfPlayerItems.findIndex(playerItem=>playerItem._id===newItem._id)
-        const updatedListOfItems=[...listOfPlayerItems]
-        updatedListOfItems[updatedItemIndex]=newItem
-        setPlayerItems(updatedListOfItems)
-    }
-
-    // const updateStore = (newStore) => {
-    //     updateOneStoreItem(newStore)
-    //     const updatedStoreIndex=listOfStoreInventory.findIndex(storeItem=>storeItem._id===newStore._id)
-    //     const updatedListOfStoreInventory=[...listOfStoreInventory]
-    //     updatedListOfStoreInventory[updatedStoreIndex]=newStore
-    //     setStoreInventory(updatedListOfStoreInventory)
-    // }
-
-    const updateInventory = (newInventory) => {
-        updateOneItem(newInventory)
-        const updatedInventoryIndex=listOfPlayerItems.findIndex(inventory=>inventory._id===newInventory._id)
-        const updatedListOfInventory=[...listOfPlayerItems]
-        updatedListOfInventory[updatedInventoryIndex]=newInventory
-        setPlayerItems(updatedListOfInventory)
-
-    }
-
     
     return(
         <Router>
             <Header/>
             <Routes>
                 <Route path='/' element={<Start  listOfPartyMembers = {listOfPartyMembers} />}/>
-                <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers} updateStartingEquipment={updateStartingEquipment}/>}/>
+                <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers} />}/>
                 <Route path='/main-menu' element={<MainMenu/>}/>
                 <Route path='/missions' element={<Missions/>}/>
                 <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog} removeFromParty={removeFromParty} addToAvailable={addToAvailable}/>}/>
-                <Route path='/store' element={<Store  inventory={listOfPlayerItems} messages={listOfLogMessages} partyMembers={listOfPartyMembers} updateInventory={updateInventory}/>}/>
+                <Route path='/store' element={<Store messages={listOfLogMessages} partyMembers={listOfPartyMembers} armourInventory={armourInventory} weaponInventory={weaponInventory} storeWeapons = {storeWeapons} storeArmours = {storeArmours} removeFromStoreWeapons={removeFromStoreWeapons} addToWeaponInventory={addToWeaponInventory} updatePlayer={updatePlayer} updateLog={updateLog} removeFromStoreArmour={removeFromStoreArmour} addToArmourInventory={addToArmourInventory}/>}/>
                 <Route path='/inventory' element={<Inventory/>}/>
             </Routes>
         </Router>

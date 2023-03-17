@@ -16,8 +16,10 @@ export const updateOneMember=(member)=>{
     })
     .then(res=>res.json())
 }
-export const resetParty=()=>{
-    return fetch(baseUrl+"reset", {method:'POST'})
+export const resetParty=(player)=>{
+    return fetch(baseUrl+"reset", {method:'POST',
+    body:JSON.stringify(player),
+    headers: { 'Content-Type': 'application/json' }})
     .then(res=>res.json())
 }
 export const deleteParty=()=>{

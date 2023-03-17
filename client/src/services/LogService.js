@@ -16,8 +16,12 @@ export const updateOneMessage=(message)=>{
     })
     .then(res=>res.json())
 }
-export const resetLog=()=>{
-    return fetch(baseUrl+"reset", {method:'POST'})
+export const resetLog=(log)=>{
+    return fetch(baseUrl+"reset", {
+        method:'POST',
+        body:JSON.stringify(log),
+        headers:{'Content-Type':'application/json'}
+    })
     .then(res=>res.json())
 }
 export const postMessage=(message)=>{

@@ -16,8 +16,12 @@ export const updateOneWeapon=(item)=>{
     })
     .then(res=>res.json())
 }
-export const resetWeaponInventory=()=>{
-    return fetch(baseUrl+"reset", {method:'POST'})
+export const resetWeaponInventory=(item)=>{
+    return fetch(baseUrl+"reset", {
+        method:'POST',
+        body: JSON.stringify(item),
+        headers: { 'Content-Type': 'application/json' }
+    })
     .then(res=>res.json())
 }
 export const postWeapon=(item)=>{
