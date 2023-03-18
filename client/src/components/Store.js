@@ -210,8 +210,9 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         })
 
     const playerWeaponData=weaponInventory.map((weapon)=>{
+        const filterByPlayer=partyMembers.find(player=>player.is_player)
             const isEquippedWeapon=()=>{
-                if(player.weapon.name==weapon.weapon.name){
+                if(filterByPlayer.weapon.name==weapon.weapon.name){
                     return true
                 }
                 return false
@@ -227,8 +228,9 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         })
     
     const playerArmourData=armourInventory.map((armour)=>{
+        const filterByPlayer=partyMembers.find(player=>player.is_player)
             const isEquippedArmour=()=>{
-                if(player.armour.name==armour.armour.name){
+                if(filterByPlayer.armour.name==armour.armour.name){
                     return true
                 }
                 return false

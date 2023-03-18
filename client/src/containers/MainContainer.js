@@ -210,8 +210,8 @@ const MainContainer = () =>{
                 <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog} removeFromParty={removeFromParty} addToAvailable={addToAvailable}/>}/>
 
                 <Route path='/store' element={<Store messages={listOfLogMessages} partyMembers={listOfPartyMembers} armourInventory={armourInventory} weaponInventory={weaponInventory} storeWeapons = {storeWeapons} storeArmours = {storeArmours} removeFromStoreWeapons={removeFromStoreWeapons} addToWeaponInventory={addToWeaponInventory} updatePlayer={updatePlayer} updateLog={updateLog} removeFromStoreArmour={removeFromStoreArmour} addToArmourInventory={addToArmourInventory} removeFromWeaponInventory={removeFromWeaponInventory} addToStoreWeapons={addToStoreWeapons} removeFromArmourInventory={removeFromArmourInventory} addToStoreArmours={addToStoreArmours}/>}/>
-                
-                <Route path='/inventory' element={<Inventory/>}/>
+
+                <Route path='/inventory' element={<Inventory partyMembers={listOfPartyMembers} armourInventory={armourInventory} weaponInventory={weaponInventory} updatePlayer={updatePlayer} messages={listOfLogMessages} updateLog={updateLog}/>}/>
             </Routes>
         </Router>
     )

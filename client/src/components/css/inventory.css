@@ -1,0 +1,37 @@
+#armour-inventory{
+    display:flex;
+    flex-direction: column;
+    height:300px;
+    width:30%;
+    overflow: scroll;
+    margin:20px;
+    padding:5px;
+    border:2px solid black;
+}
+#weapon-inventory{
+    display:flex;
+    flex-direction: column;
+    height:300px;
+    width:30%;
+    overflow: scroll;
+    margin:20px;
+    padding:5px;
+    border:2px solid black;
+
+}
+#armours{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#weapons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#inventories{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
