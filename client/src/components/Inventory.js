@@ -109,8 +109,8 @@ const Inventory=({partyMembers,armourInventory,weaponInventory,updatePlayer,mess
     })
 
     return(
-        <section>
-            <div>
+        <section id="inventory-section">
+            <div id="main-menu-button">
                 <a href='/main-menu'>Main Menu</a>
             </div>
             <div id="inventories">
@@ -121,9 +121,9 @@ const Inventory=({partyMembers,armourInventory,weaponInventory,updatePlayer,mess
                     {player?playerWeaponData:null}
                 </div>
             </div>
-            <div id="buy-stims">
-                {player?<p>Stim Packs: {player.stim_count}</p>:null}
-                {player?<p>Credits: {player.credits}</p>:null}
+            <div id="stims-and-credits">
+                {player?<p id="stims" >Stim Packs: {player.stim_count}</p>:null}
+                {player?<p id="credits" >Credits: {player.credits}</p>:null}
             </div>
             <div id="log">
                 {logMessages}
