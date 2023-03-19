@@ -1,4 +1,5 @@
 import './css/cantina.css'
+import PlaySong from './music/playsong'
 
 const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToParty,updatePlayer,updateLog,removeFromParty,addToAvailable})=>{
     const onHireClick=(hunter)=>{
@@ -131,6 +132,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
 
     return(
         <section id="cantina-section">
+            {PlaySong()}
             <div id="main-menu-button">
                 <a href='/main-menu'>Main Menu</a>
             </div>
