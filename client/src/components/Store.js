@@ -255,8 +255,8 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         })
     })
     return(
-        <section>
-            <div>
+        <section id="store-section">
+            <div id="main-menu-button">
                 <a href='/main-menu'>Main Menu</a>
             </div>
             <div id="inventories">
@@ -269,9 +269,9 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                     {player?playerArmourData:null}
                 </div>
             </div>
-            <div id="buy-stims">
-                <button onClick={onStimBuyClick}>Buy Stim Pack</button>
-                {filterPlayer?<p>Credits: {filterPlayer.credits}</p>:null}
+            <div id="stims-and-credits">
+                <button id="buy-stim"onClick={onStimBuyClick}>Buy Stim Pack</button>
+                {filterPlayer?<p id="credits">Credits: {filterPlayer.credits}</p>:null}
             </div>
             <div id="log">
                 {logMessages}

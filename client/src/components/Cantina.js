@@ -108,7 +108,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
         return(
             <div id="bh">
                 <p>{hunter.name}</p>
-                <p>Cost:{hunter.credits} credits</p>
+                <p>Cost: {hunter.credits} credits</p>
                 <button onClick={()=>onHireClick(hunter)}>Hire</button>
             </div>
         )

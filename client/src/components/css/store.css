@@ -5,8 +5,11 @@
     width:30%;
     overflow: scroll;
     margin:20px;
-    padding:5px;
-    border:2px solid black;
+    padding:15px;
+    border:2px solid rgb(119, 119, 243);
+    background-color: rgb(53, 53, 122);
+    opacity: 0.7;
+    color: whitesmoke;
 }
 #player-inventory{
     display:flex;
@@ -15,23 +18,106 @@
     width:30%;
     overflow: scroll;
     margin:20px;
-    padding:5px;
-    border:2px solid black;
-
+    padding:15px;
+    border:2px solid rgb(119, 119, 243);
+    background-color: rgb(53, 53, 122);
+    opacity: 0.7;
+    color: whitesmoke;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(53, 53, 122);;
+    border-radius: 30px;
+    opacity: 0.2;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(119, 119, 243, 0.3);
+    border-radius: 30px;
+    opacity: 0.2;
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+    opacity: 100%;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+  background: rgb(119, 119, 243, 0.6);;;
+}
+::-webkit-scrollbar-corner{
+    background-color:rgb(53, 53, 122);
+}
+
 #armours{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 2px solid rgb(119, 119, 243);
+    padding: 5px;
 }
 #weapons{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 2px solid rgb(119, 119, 243);
+    padding: 5px;
 }
 #inventories{
     display:flex;
     flex-direction: row;
     justify-content: center;
+}
+
+#stims-and-credits{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width:65%;
+    margin-left: 17%;
+    padding: 10px;
+}
+
+#buy-stim{
+    border:2px solid rgb(119, 119, 243);
+    background-color: rgb(53, 53, 122);
+    border-radius: 15px;
+    width: 100px;
+    color: whitesmoke;
+    opacity: 0.7;
+    font-weight:bold;
+}
+
+#buy-stim:hover{
+    cursor:pointer;
+}
+
+#credits{
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+}
+
+#store-section{
+    background-image: url(./images/Store.jpg);
+    padding: 40px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#main-menu-button{
+    width:100px;
+    border:2px solid rgb(119, 119, 243);
+    background-color:rgb(53, 53, 122);
+    padding:5px;
+    text-align: center;
+    opacity: 0.7;
+    border-radius: 15px;
+}
     
+#main-menu-button>a{
+    color:whitesmoke;
+    text-decoration: none;
+    text-align:center;
 }
