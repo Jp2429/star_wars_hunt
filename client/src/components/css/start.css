@@ -1,4 +1,32 @@
 #start-menu{
-    border: 10px black;
-    background: url("./images/start.jpeg")
+    background-image: url(./images/start.jpeg);
+    padding:40px;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    height: 500px;
+
+}
+#start-menu>div{
+    text-align:center;
+    border: 2px solid rgb(119, 119, 243);
+    width:20%;
+    margin-left:40%;
+    padding:10px;
+    background-color:rgb(53, 53, 122);
+    opacity:0.7;
+    margin-bottom:10px;
+    border-radius:10px;
+
+}
+
+#start-menu>div>a{
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+#start-menu>div>p{
+    color:whitesmoke;
+    text-decoration: none;
+    margin-bottom:1px;
+    margin-top:1px;
 }

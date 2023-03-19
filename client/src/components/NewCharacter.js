@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./css/newcharacter.css"
 
 
 const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
@@ -131,6 +132,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
 
 
     return(
+        <section id="new-char-form">
         <form className="form" onSubmit={onSubmit}>
             <input onChange={onChange} type = "text" id = "name" name = "name" value = {formData.name}/>
             <select onChange={onSpeciesChange} name = "species" value = {selectedSpecies}>
@@ -150,6 +152,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
             </select>
             <input type = "submit" value = "Create Character"/>
         </form>
+        </section>
     )
 }
 export default NewCharacter

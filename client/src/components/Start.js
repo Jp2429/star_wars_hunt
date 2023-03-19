@@ -5,10 +5,14 @@ const Start = ({listOfPartyMembers}) =>{
     
     
     return(
-        <div className="start-menu">
+        <section id="start-menu">
+        <div id="start-menu-div">
             <a href='/new-character'> New Character </a>
-            {listOfPartyMembers.length !== 0?<a href='/main-menu'> Load Character</a> : <p>You do not currently have a save</p>}
         </div>
+        <div>
+            {listOfPartyMembers.length !== 0?<a href='/main-menu'> Load Character</a> : <p>No save found</p>}
+        </div>
+        </section>
     )
     }
 export default Start

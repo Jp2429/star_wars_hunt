@@ -1,0 +1,41 @@
+#new-char-form{
+    background-image: url(./images/start.jpeg);
+    padding:40px;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    height: 500px;
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:20%;
+    margin-left:40%;
+}
+
+.form>input{
+    background-color:rgb(53, 53, 122);
+    opacity:0.7;
+    border: 2px solid rgb(119, 119, 243);
+    color:whitesmoke;
+    padding:10px;
+    margin-bottom:10px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.form>select{
+    background-color:rgb(53, 53, 122);
+    opacity:0.7;
+    border: 2px solid rgb(119, 119, 243);
+    color:whitesmoke;
+    text-align:center;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
+}
+
+
+
+
