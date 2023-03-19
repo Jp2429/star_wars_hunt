@@ -1,6 +1,10 @@
+import "./css/missions.css"
+
 const Missions=()=>{
     return(
-        null
+        <section id="missions-section">
+            Missions
+        </section>
     )
 }
 export default Missions

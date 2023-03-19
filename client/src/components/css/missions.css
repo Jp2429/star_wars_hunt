@@ -1,0 +1,7 @@
+#missions-section{
+    background-image: url(./images/Spaceport.jpg);
+    padding: 40px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 500px;
+}
