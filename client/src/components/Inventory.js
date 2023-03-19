@@ -115,10 +115,10 @@ const Inventory=({partyMembers,armourInventory,weaponInventory,updatePlayer,mess
             </div>
             <div id="inventories">
                 <div id="armour-inventory">
-                    {playerArmourData}
+                    {player?playerArmourData:null}
                 </div>
                 <div id="weapon-inventory">
-                    {playerWeaponData}
+                    {player?playerWeaponData:null}
                 </div>
             </div>
             <div id="buy-stims">

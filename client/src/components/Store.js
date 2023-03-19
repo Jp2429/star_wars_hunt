@@ -265,8 +265,8 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                     {storeArmourData}
                 </div>
                 <div id="player-inventory">
-                    {playerWeaponData}
-                    {playerArmourData}
+                    {player?playerWeaponData:null}
+                    {player?playerArmourData:null}
                 </div>
             </div>
             <div id="buy-stims">
