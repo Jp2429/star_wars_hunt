@@ -1,0 +1,18 @@
+@font-face{
+    font-family:Mandalore;
+    src:url(./fonts/mandalore.ttf)
+}
+
+#title{
+    text-align: center;
+    font-family:Mandalore;
+    font-size: 50px;
+    color:whitesmoke;
+}
+
+#title-div{
+    justify-content: center;
+    background-color: rgb(53, 53, 122);
+    padding:1px;
+    border-bottom: 2px solid rgb(119, 119, 243);
+}

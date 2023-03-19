@@ -110,7 +110,6 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 <p>{hunter.name}</p>
                 <p>Cost:{hunter.credits} credits</p>
                 <button onClick={()=>onHireClick(hunter)}>Hire</button>
-                <hr></hr>
             </div>
         )
     })
@@ -131,8 +130,8 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
     })
 
     return(
-        <section>
-            <div>
+        <section id="cantina-section">
+            <div id="main-menu-button">
                 <a href='/main-menu'>Main Menu</a>
             </div>
             <div id="bh-party-div">
@@ -144,8 +143,9 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 </div>
             </div>
             <div id="heal-and-credits">
-                <button onClick={onHealClick}>Heal</button>
-                {filterPlayer?<p>Credits: {filterPlayer.credits}</p>:null}
+                <button id="heal" onClick={onHealClick}>Heal</button>
+                {filterPlayer?<p id="credits">Credits: {filterPlayer.credits}</p>:null}
+                
             </div>
             <div id="log">
                 {logMessages}

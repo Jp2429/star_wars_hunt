@@ -1,4 +1,19 @@
-#main-menu{
+#main-menu-div{
 display: flex;
 flex-direction: column;
+padding: 30px;
+}
+#main-menu-div>ul{
+    display:flex;
+    flex-direction: column;
+    list-style: none;
+}
+#main-menu-div>ul>li{
+text-decoration: none;
+}
+
+
+#main-menu{
+    border: 10px black;
+    background-color: aqua;
 }
