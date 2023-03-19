@@ -7,12 +7,10 @@ const MainMenu = () =>{
                 <a href="/">Exit</a>
             </div>
             <div id="main-menu-div">
-                <ul>
-                    <li><a href="/missions">Missions</a></li>
-                    <li><a href="/cantina">Cantina</a></li>
-                    <li><a href="/store">Store</a></li>
-                    <li><a href="/inventory">Inventory</a></li>
-                </ul>
+                    <a id ="missions" href="/missions">Missions</a>
+                    <a id ="cantina" href="/cantina">Cantina</a>
+                    <a id ="store" href="/store">Store</a>
+                    <a id ="inventory" href="/inventory">Inventory</a>
             </div>
         </section>
     )
