@@ -1,14 +1,18 @@
+import './css/mainmenu.css'
+
 const MainMenu = () =>{
     return(
         <section id="main-menu">
             <div id="exit-button">
                 <a href="/">Exit</a>
             </div>
-            <div className="main-menu-div">
-                <a href="/missions">Missions</a>
-                <a href="/cantina">Cantina</a>
-                <a href="/store">Store</a>
-                <a href="/inventory">Inventory</a>
+            <div id="main-menu-div">
+                <ul>
+                    <li><a href="/missions">Missions</a></li>
+                    <li><a href="/cantina">Cantina</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                </ul>
             </div>
         </section>
     )
