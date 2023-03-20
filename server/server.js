@@ -47,7 +47,7 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
                   },
                   {
                       name:"Thug Elite",
-                      health:150,
+                      health:250,
                       level:1,
                       weapon:{
                           name:"A280 Blaster Rifle",
@@ -277,231 +277,240 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {useUnifiedTopology: true})
             .then(_=>bountyHunterCollection
                 .insertMany(
                   [
-                      {
-                          name:"Dash Halcyon",
-                          species:"Human",
-                          health:250,
-                          max_health:250,
-                          action_points:20,
-                          credits:1500,
-                          level:1,
-                          xp_to_level_up:100,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"DH-17 Blaster Pistol",
-                              damage:25,
-                              chance_to_hit:55,
-                              cost:550,
-                              ability:"Flurry"
-                          },
-                          armour:{
-                              name:"Fatigues",
-                              cost:250,
-                              defense:0
-                          }
-                      },
-                      {
-                          name:"Rix Terrik",
-                          species:"Human",
-                          health:375,
-                          max_health:375,
-                          action_points:20,
-                          credits:2500,
-                          level:5,
-                          xp_to_level_up:250,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"DL-44 Heavy Blaster Pistol",
-                              damage:40,
-                              chance_to_hit:60,
-                              cost:750,
-                              ability:"Flurry"
-                          },
-                          armour:{
-                              name:"Bounty Hunter Armour",
-                              cost:550,
-                              defense:10
-                          }
-                      },
-                      {
-                          name:"Chikoob Bomu",
-                          species:"Rodian",
-                          health:500,
-                          max_health:500,
-                          action_points:20,
-                          credits:4000,
-                          level:10,
-                          xp_to_level_up:400,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"IB-94",
-                              damage:55,
-                              chance_to_hit:60,
-                              cost:1000,
-                              ability:"Flurry"
-                          },
-                          armour:{
-                              name:"Durasteel Armour",
-                              cost:750,
-                              defense:15
-                          }
-                      },
-                      {
-                          name:"Do'seca",
-                          species:"Twi'lek",
-                          health:250,
-                          max_health:250,
-                          action_points:20,
-                          credits:1500,
-                          level:1,
-                          xp_to_level_up:100,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"A280 Blaster Rifle",
-                              damage:35,
-                              chance_to_hit:55,
-                              cost:550,
-                              ability:"Burst"
-                          },
-                          armour:{
-                              name:"Fatigues",
-                              cost:250,
-                              defense:0
-                          }
-                      },
-                      {
-                          name:"Cadan Keeg",
-                          species:"Duros",
-                          health:375,
-                          max_health:375,
-                          action_points:20,
-                          credits:2500,
-                          level:5,
-                          xp_to_level_up:250,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"EE-3 Carbine Rifle",
-                              damage:45,
-                              chance_to_hit:60,
-                              cost:750,
-                              ability:"Burst"
-                          },
-                          armour:{
-                              name:"Bounty Hunter Armour",
-                              cost:550,
-                              defense:10
-                          }
-                      },
-                      {
-                          name:"Pekt",
-                          species:"Trandoshan",
-                          health:500,
-                          max_health:500,
-                          action_points:20,
-                          credits:4000,
-                          level:10,
-                          xp_to_level_up:400,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"AR-1 Blaster Rifle",
-                              damage:60,
-                              chance_to_hit:60,
-                              cost:1000,
-                              ability:"Burst"
-                          },
-                          armour:{
-                              name:"Durasteel Armour",
-                              cost:750,
-                              defense:20
-                          }
-                      },
-                      {
-                          name:"Reine Dara",
-                          species:"Human",
-                          health:150,
-                          max_health:150,
-                          action_points:20,
-                          credits:1500,
-                          level:1,
-                          xp_to_level_up:100,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"IQA-11 Blaster Rifle",
-                              damage:55,
-                              chance_to_hit:75,
-                              cost:550,
-                              ability:"Snipe"
-                          },
-                          armour:{
-                              name:"Fatigues",
-                              cost:250,
-                              defense:0
-                          }
-                      },
-                      {
-                          name:"Kenneth Darwin",
-                          species:"Human",
-                          health:275,
-                          max_health:275,
-                          action_points:20,
-                          credits:2500,
-                          level:5,
-                          xp_to_level_up:250,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:"Valkan-38x",
-                              damage:65,
-                              chance_to_hit:80,
-                              cost:750,
-                              ability:"Snipe"
-                          },
-                          armour:{
-                              name:"Ranged Armour",
-                              cost:550,
-                              defense:5
-                          }
-                      },
-                      {
-                          name:"HK-47",
-                          species:"Droid",
-                          health:500,
-                          max_health:500,
-                          action_points:20,
-                          credits:5000,
-                          level:10,
-                          xp_to_level_up:100,
-                          cur_xp:0,
-                          is_player:false,
-                          stim_count:0,
-                          weapon:{
-                              name:" HK-47s Scoped Assassinator",
-                              damage:90,
-                              chance_to_hit:85,
-                              cost:1000,
-                              ability:"Snipe"
-                          },
-                          armour:{
-                              name:"Durasteel Plating",
-                              cost:750,
-                              defense:20
-                          }
-                      }
+                    {
+                        name:"Dash Halcyon",
+                        species:"Human",
+                        health:250,
+                        max_health:250,
+                        action_points:20,
+                        max_ap:20,
+                        credits:1500,
+                        level:1,
+                        xp_to_level_up:100,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"DH-17 Blaster Pistol",
+                            damage:25,
+                            chance_to_hit:55,
+                            cost:550,
+                            ability:"Flurry"
+                        },
+                        armour:{
+                            name:"Fatigues",
+                            cost:250,
+                            defense:0
+                        }
+                    },
+                    {
+                        name:"Rix Terrik",
+                        species:"Human",
+                        health:375,
+                        max_health:375,
+                        action_points:20,
+                        max_ap:20,
+                        credits:2500,
+                        level:5,
+                        xp_to_level_up:250,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"DL-44 Heavy Blaster Pistol",
+                            damage:40,
+                            chance_to_hit:60,
+                            cost:750,
+                            ability:"Flurry"
+                        },
+                        armour:{
+                            name:"Bounty Hunter Armour",
+                            cost:550,
+                            defense:10
+                        }
+                    },
+                    {
+                        name:"Chikoob Bomu",
+                        species:"Rodian",
+                        health:500,
+                        max_health:500,
+                        action_points:20,
+                        max_ap:20,
+                        credits:4000,
+                        level:10,
+                        xp_to_level_up:400,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"IB-94",
+                            damage:55,
+                            chance_to_hit:60,
+                            cost:1000,
+                            ability:"Flurry"
+                        },
+                        armour:{
+                            name:"Durasteel Armour",
+                            cost:750,
+                            defense:15
+                        }
+                    },
+                    {
+                        name:"Do'seca",
+                        species:"Twi'lek",
+                        health:250,
+                        max_health:250,
+                        action_points:20,
+                        max_ap:20,
+                        credits:1500,
+                        level:1,
+                        xp_to_level_up:100,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"A280 Blaster Rifle",
+                            damage:35,
+                            chance_to_hit:55,
+                            cost:550,
+                            ability:"Burst"
+                        },
+                        armour:{
+                            name:"Fatigues",
+                            cost:250,
+                            defense:0
+                        }
+                    },
+                    {
+                        name:"Cadan Keeg",
+                        species:"Duros",
+                        health:375,
+                        max_health:375,
+                        action_points:20,
+                        max_ap:20,
+                        credits:2500,
+                        level:5,
+                        xp_to_level_up:250,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"EE-3 Carbine Rifle",
+                            damage:45,
+                            chance_to_hit:60,
+                            cost:750,
+                            ability:"Burst"
+                        },
+                        armour:{
+                            name:"Bounty Hunter Armour",
+                            cost:550,
+                            defense:10
+                        }
+                    },
+                    {
+                        name:"Pekt",
+                        species:"Trandoshan",
+                        health:500,
+                        max_health:500,
+                        action_points:20,
+                        max_ap:20,
+                        credits:4000,
+                        level:10,
+                        xp_to_level_up:400,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"AR-1 Blaster Rifle",
+                            damage:60,
+                            chance_to_hit:60,
+                            cost:1000,
+                            ability:"Burst"
+                        },
+                        armour:{
+                            name:"Durasteel Armour",
+                            cost:750,
+                            defense:20
+                        }
+                    },
+                    {
+                        name:"Reine Dara",
+                        species:"Human",
+                        health:150,
+                        max_health:150,
+                        action_points:20,
+                        max_ap:20,
+                        credits:1500,
+                        level:1,
+                        xp_to_level_up:100,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"IQA-11 Blaster Rifle",
+                            damage:55,
+                            chance_to_hit:75,
+                            cost:550,
+                            ability:"Snipe"
+                        },
+                        armour:{
+                            name:"Fatigues",
+                            cost:250,
+                            defense:0
+                        }
+                    },
+                    {
+                        name:"Kenneth Darwin",
+                        species:"Human",
+                        health:275,
+                        max_health:275,
+                        action_points:20,
+                        max_ap:20,
+                        credits:2500,
+                        level:5,
+                        xp_to_level_up:250,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:"Valkan-38x",
+                            damage:65,
+                            chance_to_hit:80,
+                            cost:750,
+                            ability:"Snipe"
+                        },
+                        armour:{
+                            name:"Ranged Armour",
+                            cost:550,
+                            defense:5
+                        }
+                    },
+                    {
+                        name:"HK-47",
+                        species:"Droid",
+                        health:500,
+                        max_health:500,
+                        action_points:20,
+                        max_ap:20,
+                        credits:5000,
+                        level:10,
+                        xp_to_level_up:100,
+                        cur_xp:0,
+                        is_player:false,
+                        stim_count:0,
+                        weapon:{
+                            name:" HK-47s Scoped Assassinator",
+                            damage:90,
+                            chance_to_hit:85,
+                            cost:1000,
+                            ability:"Snipe"
+                        },
+                        armour:{
+                            name:"Durasteel Plating",
+                            cost:750,
+                            defense:20
+                        }
+                    }
                   ]
                 )
                 .then((result) => {

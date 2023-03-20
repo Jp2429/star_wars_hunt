@@ -10,6 +10,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
         health:250,
         max_health:250,
         action_points:20,
+        max_ap:20,
         credits:3500,
         level:1,
         xp_to_level_up:100,
@@ -101,6 +102,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
                 health:250,
                 max_health:250,
                 action_points:20,
+                max_ap:20,
                 credits:3500,
                 level:1,
                 xp_to_level_up:100,
@@ -123,7 +125,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
         setSelectedSpecies ("")
         setSelectedWeapon ("")
         
-        setTimeout(delayMove,2000)
+        setTimeout(delayMove,1000)
 
         }
         const delayMove=()=>{

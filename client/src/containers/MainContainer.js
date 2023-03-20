@@ -8,6 +8,7 @@ import Missions from '../components/Missions'
 import Inventory from '../components/Inventory'
 import Store from '../components/Store'
 import Cantina from '../components/Cantina'
+import TatooineBountyHunt from '../components/battles/TatooineBountyHunt'
 import {getEnemies, getOneEnemy, updateOneEnemy, resetEnemies} from "../services/EnemyService"
 import {getMembers, getOneMember, updateOneMember, deleteMember ,resetParty,deleteParty, postMember} from "../services/PartyService"
 import {getMessages, getOneMessage, updateOneMessage, resetLog, postMessage, deleteMessage } from "../services/LogService"
@@ -222,9 +223,21 @@ const MainContainer = () =>{
                     weaponInventory={weaponInventory}
                     updatePlayer={updatePlayer} 
                     messages={listOfLogMessages} 
-                    updateLog={updateLog}/>}
+                    updateLog={updateLog}
+                    />}
                 />
                     }
+                {listOfPartyMembers.length &&
+                <Route path='/tatooine-bounty-hunt'
+                    element={<TatooineBountyHunt
+                    messages={listOfLogMessages} 
+                    partyMembers={listOfPartyMembers} 
+                    enemies={listOfEnemies}
+                    updateLog={updateLog}
+                    updatePlayer={updatePlayer}
+                    />}
+                />
+                }
             </Routes>
                     
         </Router>
