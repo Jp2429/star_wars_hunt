@@ -8,6 +8,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const[missionEnemies,setMissionEnemies]=useState([])
     const[companions,setCompanions]=useState([])
     const[targetedEnemy,setTargetEnemy]=useState({})
+    const[battleLog,setBattleLog]=useState([])
     const[checked,setChecked]=useState("")
 
 
@@ -16,8 +17,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     },[])
 
     const onFireClick=()=>{
-        const newMessages = [...messages[0].messages]
-        // setIsChecked(false)
+        const newMessages = [...battleLog[0].messages]
         //Player Attack
         for(let i=0;i<missionEnemies.length;i++){
             if(targetedEnemy._id===missionEnemies[i]._id){
@@ -29,6 +29,22 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         damageDealt=2
                     }
                     //logUpdate
+                    const newMessage = { message: "You hit a " + missionEnemies[i].name+" for "+damageDealt+" damage" }
+                    newMessages.push(newMessage)
+                    const newLogMessage = [{
+                        _id: messages[0]._id,
+                        messages: newMessages
+                    }]
+                    setBattleLog(newLogMessage)
+                }else{
+                    //logUpdate
+                    const newMessage = { message: "You missed"}
+                    newMessages.push(newMessage)
+                    const newLogMessage = [{
+                        _id: messages[0]._id,
+                        messages: newMessages
+                    }]
+                    setBattleLog(newLogMessage)
                 }
                 
                 const newEnemies=[...missionEnemies]
@@ -177,6 +193,12 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 newPlayer.action_points=newPlayer.max_ap
                 newPlayer.level+=1
             }
+            const newMessages = [...battleLog[0].messages]
+            const newLogMessage = {
+                _id: messages[0]._id,
+                messages: newMessages
+            }
+            updateLog(newLogMessage)
             setPlayer(newPlayer)
             updatePlayer(newPlayer)
 
@@ -246,6 +268,12 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         setPlayer(findPlayer)
         const filterCompanions=partyMembers.filter(member=>!member.is_player)
         setCompanions(filterCompanions)
+        // const mapMessages=messages.map((message)=>{
+        //     return message
+        // })
+        const filterLog=messages.filter(log=>log._id!==null)
+        console.log("loggy",filterLog)
+        setBattleLog(filterLog)
     }
     const logMessages=messages.map((message)=>{
         return message.messages.map((logMessage)=>{
@@ -254,6 +282,15 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             )
         })
     })
+    const displayBattleLogMessages=battleLog.map((message)=>{
+        console.log("battle log",battleLog)
+        return message.messages.map((logMessage)=>{
+            return (
+                <p> Message:{logMessage.message}</p>
+            )
+        })
+    })
+    
 
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
@@ -297,7 +334,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                     <button onClick={onRetreatClick}>Retreat</button>
                 </div>
                 <div id="battle-log">
-                    {logMessages}
+                    {displayBattleLogMessages}
                 </div>
                 <div id="party-details">
                     {player&&
