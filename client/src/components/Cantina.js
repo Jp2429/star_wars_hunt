@@ -1,5 +1,7 @@
 import './css/cantina.css'
 import PlaySong from './music/playsong'
+import ReactAudioPlayer from 'react-audio-player';
+
 
 const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToParty,updatePlayer,updateLog,removeFromParty,addToAvailable})=>{
     const onHireClick=(hunter)=>{
