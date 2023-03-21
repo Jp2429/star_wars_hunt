@@ -28,7 +28,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have bought this item: "+item.weapon.name }
+            const newMessage={message:getTheCurrentDate()+"You have bought this item: "+item.weapon.name }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -37,7 +37,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"You could not buy this item: "+item.weapon.name }
+            const newMessage={message:getTheCurrentDate()+"You could not buy this item: "+item.weapon.name }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -71,7 +71,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             armour:player.armour
         }
         updatePlayer(updatedPlayer)
-        const newMessage={message:"You have sold this item: "+item.weapon.name }
+        const newMessage={message:getTheCurrentDate()+"You have sold this item: "+item.weapon.name }
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -104,7 +104,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage={message:"You have sold this item: "+item.armour.name }
+        const newMessage={message:getTheCurrentDate()+"You have sold this item: "+item.armour.name }
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -179,7 +179,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage={message:"You have bought a Stim Pack "}
+        const newMessage={message:getTheCurrentDate()+"You have bought a Stim Pack "}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -187,6 +187,33 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             messages:newMessages
         }
         updateLog(newLogMessage)
+    }
+
+    const getTheCurrentDate=()=>{
+        const curDate=new Date()
+        let newMonth=curDate.getMonth()+1
+        newMonth.toString()
+        if(newMonth<10){
+            newMonth="0"+newMonth
+        }
+        let newMinutes=curDate.getMinutes()
+        newMinutes.toString()
+        if(newMinutes<10){
+            newMinutes="0"+newMinutes
+        }
+        let newDay=curDate.getDate()
+        newDay.toString()
+        if(newDay<10){
+            newDay="0"+newDay
+        }
+        let newHours=curDate.getHours()
+        newHours.toString()
+        if(newHours<10){
+            newHours="0"+newHours
+        }
+        
+        const formattedDate =newDay+"/"+newMonth+"/"+curDate.getFullYear()+" "+newHours+":"+newMinutes+" : "
+        return formattedDate.toString()
     }
 
     const player=partyMembers.find(player=>player.is_player)
@@ -254,7 +281,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
     const logMessages=messages.map((message)=>{
         return message.messages.map((logMessage)=>{
             return (
-                <p> Message:{logMessage.message}</p>
+                <p>{logMessage.message}</p>
             )
         })
     })

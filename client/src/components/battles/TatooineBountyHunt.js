@@ -28,8 +28,18 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         if(newMinutes<10){
             newMinutes="0"+newMinutes
         }
+        let newDay=curDate.getDate()
+        newDay.toString()
+        if(newDay<10){
+            newDay="0"+newDay
+        }
+        let newHours=curDate.getHours()
+        newHours.toString()
+        if(newHours<10){
+            newHours="0"+newHours
+        }
         
-        const formattedDate =curDate.getDate()+"/"+newMonth+"/"+curDate.getFullYear()+" "+curDate.getHours()+":"+newMinutes+" : "
+        const formattedDate =newDay+"/"+newMonth+"/"+curDate.getFullYear()+" "+newHours+":"+newMinutes+" : "
         return formattedDate.toString()
     }
 

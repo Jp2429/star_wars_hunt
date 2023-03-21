@@ -29,7 +29,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 armour:player[0].armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have hired "+hunter.name}
+            const newMessage={message:getTheCurrentDate()+"You have hired "+hunter.name}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -38,7 +38,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"Could not hire "+hunter.name}
+            const newMessage={message:getTheCurrentDate()+"Could not hire "+hunter.name}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -53,7 +53,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
         const idToDelete=member._id
         removeFromParty(idToDelete)
         addToAvailable(member)
-        const newMessage={message:member.name+" has been dismissed"}
+        const newMessage={message:getTheCurrentDate()+member.name+" has been dismissed"}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -86,7 +86,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have healed yourself"}
+            const newMessage={message:getTheCurrentDate()+"You have healed yourself"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -95,7 +95,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"You cannot be healed, either you are at max health or you cannot afford our services"}
+            const newMessage={message:getTheCurrentDate()+"You cannot be healed, either you are at max health or you cannot afford our services"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -105,6 +105,32 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
             updateLog(newLogMessage)
         }
         
+    }
+    const getTheCurrentDate=()=>{
+        const curDate=new Date()
+        let newMonth=curDate.getMonth()+1
+        newMonth.toString()
+        if(newMonth<10){
+            newMonth="0"+newMonth
+        }
+        let newMinutes=curDate.getMinutes()
+        newMinutes.toString()
+        if(newMinutes<10){
+            newMinutes="0"+newMinutes
+        }
+        let newDay=curDate.getDate()
+        newDay.toString()
+        if(newDay<10){
+            newDay="0"+newDay
+        }
+        let newHours=curDate.getHours()
+        newHours.toString()
+        if(newHours<10){
+            newHours="0"+newHours
+        }
+        
+        const formattedDate =newDay+"/"+newMonth+"/"+curDate.getFullYear()+" "+newHours+":"+newMinutes+" : "
+        return formattedDate.toString()
     }
 
     const filterPlayer=partyMembers.find(player=>player.is_player)
@@ -129,7 +155,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
     const logMessages=messages.map((message)=>{
         return message.messages.map((logMessage)=>{
             return (
-                <p> Message:{logMessage.message}</p>
+                <p>{logMessage.message}</p>
             )
         })
     })
