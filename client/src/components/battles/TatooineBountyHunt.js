@@ -357,6 +357,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             const newMessage = { message: getTheCurrentDate()+ "You do not have enough AP to use an ability " }
             newMessages.push(newMessage)
         }
+        if(player.action_points>=apToUse){
         //Companion Attack with delay
         setTimeout(alliesTurn(newMessages),1000)
         //Enemy Attack with delay
@@ -368,8 +369,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         //Check if Player has won
         setTimeout(checkIfPlayerHasWon,1000)
         //Remove Action Points
-        if(player.action_points>=apToUse){
-            setTimeout(removeAP,1000)
+        setTimeout(removeAP,1000)
         }
         const newLogMessage = [{
             _id: messages[0]._id,
@@ -643,6 +643,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             newPlayer.cur_xp+=50
             const newXpMessage = { message: getTheCurrentDate()+"50 XP gained"}
             newMessages.push(newXpMessage)
+            newPlayer.action_points=newPlayer.max_ap
 
 
             if(newPlayer.cur_xp>=newPlayer.xp_to_level_up){
@@ -683,6 +684,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             const newMessage = { message: getTheCurrentDate()+"You have been defeated, you wake up later at the hideout"}
             newMessages.push(newMessage)
             newPlayer.health=1
+            newPlayer.action_points=newPlayer.max_ap
 
             const newLogMessage = {
                 _id: messages[0]._id,
@@ -743,6 +745,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const onRetreatClick=()=>{
         const newMessages = [...battleLog[0].messages]
         const newPlayer=Object.assign({},player)
+        newPlayer.action_points=newPlayer.max_ap
         const newMessage = { message: getTheCurrentDate()+"The enemy is too powerful, you have retreated back to the hideout"}
         newMessages.push(newMessage)
         updatePlayer(newPlayer)
@@ -801,44 +804,66 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             </div>
         )
     })
+    const isComplete=()=>{
+        if(player.health<=0 || missionEnemies.length===0 ){
+            return true
+        }
+        return false
+    }
 
     return(
         <section id="battle-section">
-            <div id="enemies">
-                    {displayEnemiesForm}
-            </div>
-            <div id="defeat-or-victory">
-                <br></br>
-                <br></br>
+            {!isComplete()?<section>
+                <div id="enemies">
+                        {displayEnemiesForm}
+                </div>
+                <div id="defeat-or-victory">
+                    <br></br>
+                    <br></br>
+                    
+                    <br></br>
+                    <br></br>
+                </div>
+                <div id="player">
+                    <div id="action-buttons">
+                        {!targetedEnemy.name?
+                        <div id="not-selected">
+                            <p id="target-p">Select a Target</p>
+                        </div>:
+                        <div >
+                            <button className="selected-buttons" onClick={onFireClick}>Fire</button>
+                            <button className="selected-buttons" onClick={onAbilityClick}>Ability</button>
+                        </div>
+                        }
+                        <div >
+                            <button className="selected-buttons" id="heal-button" onClick={onHealClick}>Heal</button>
+                            <button className="selected-buttons" onClick={onRetreatClick}>Retreat</button>
+                        </div>
+                        
+                    </div>
+                    <div id="battle-log">
+                        {displayBattleLogMessages}
+                    </div>
+                    <div id="party-details">
+                        {player&&
+                            <div id="player-stats">
+                                <p>{player.name}</p>
+                                <p>HP: {player.health}/{player.max_health}</p>
+                                <p>AP: {player.action_points}/{player.max_ap}</p>
+                            </div>
+                        }
+                            {displayCompanions}
+                        
+                    </div>
+                </div>
+            </section>:
+            <section>
                 {player.health<=0?<button onClick={onDefeatClick}>You have defeated, return to hideout</button>:null}
                 {missionEnemies.length===0?<button onClick={onVictoryClick}>You are Victorious, return to hideout</button>:null}
-                <br></br>
-                <br></br>
-            </div>
-            <div id="player">
-                <div id="action-buttons">
-                    {targetedEnemy.name?<button onClick={onFireClick}>Fire</button>:<p>Select a Target</p>}
-                    {targetedEnemy.name?<button onClick={onAbilityClick}>Ability</button>:<p>Select a Target</p>}
-                    <button onClick={onHealClick}>Heal</button>
-                    <button onClick={onRetreatClick}>Retreat</button>
-                </div>
-                <div id="battle-log">
-                    {displayBattleLogMessages}
-                </div>
-                <div id="party-details">
-                    {player&&
-                        <div id="player-stats">
-                            <p>{player.name}</p>
-                            <p>HP: {player.health}/{player.max_health}</p>
-                            <p>AP: {player.action_points}/{player.max_ap}</p>
-                        </div>
-                    }
-                        {displayCompanions}
-                    
-                </div>
-            </div>
-            
+            </section>
+            }
         </section>
+    
     )
 }
 export default TatooineBountyHunt
