@@ -48,7 +48,7 @@
   margin-left: 16%;
   display: flex;
   justify-content: center;
-  flex-direction:column ;
+  flex-direction:column-reverse;
   padding: 15px;
 
   overflow: scroll;

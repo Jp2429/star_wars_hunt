@@ -25,6 +25,8 @@
 #battle-log{
     overflow: scroll;
     height:175px;
+    display:flex;
+    flex-direction:column-reverse;
 }
 #player{
     top:0%;
