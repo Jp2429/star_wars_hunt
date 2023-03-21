@@ -72,9 +72,9 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             // 
         }
         //Companion Attack with delay
-        setTimeout(alliesTurn,1000)
+        setTimeout(alliesTurn(newMessages),1000)
         //Enemy Attack with delay
-        setTimeout(enemiesTurn,1000)
+        setTimeout(enemiesTurn(newMessages),1000)
         //Delete dead companions from state
         setTimeout(checkIfCompanionsAreAlive,1000)
         //Delete dead enemies from state
@@ -83,10 +83,25 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         setTimeout(checkIfPlayerHasWon,1000)
         //Regain Action Points
         setTimeout(regainAP,1000)
+        const newLogMessage = [{
+            _id: messages[0]._id,
+            messages: newMessages
+        }]
+        setBattleLog(newLogMessage)
     }
     const onAbilityClick=()=>{
         const newMessages = [...battleLog[0].messages]
-        if(player.weapon.ability==="Snipe"){
+        let apToUse=10
+        if(player.level>=1 && player.level<5){
+            apToUse=10
+        }else if(player.level>=5 && player.level<10){
+            apToUse=15
+        }else if(player.level>=10 && player.level<15){
+            apToUse=20
+        }else if(player.level>=15){
+            apToUse=25
+        }
+        if(player.weapon.ability==="Snipe" && player.action_points>=apToUse){
             for(let i=0;i<missionEnemies.length;i++){
                 if(targetedEnemy._id===missionEnemies[i]._id){
                     let damageDealt=0
@@ -161,7 +176,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 }
             }
         }
-        else if(player.weapon.ability==="Burst"){
+        else if(player.weapon.ability==="Burst" && player.action_points>=apToUse){
             for(let i=0;i<missionEnemies.length;i++){
                 if(targetedEnemy._id===missionEnemies[i]._id){
                     let damageDealt=0
@@ -169,7 +184,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                     let secondEnemyToHit=0
 
                     if(player.level>=1 && player.level<5){
-                        firstEnemyToHit=randomAiToHit(missionEnemies.length)
+                        firstEnemyToHit=i
                         secondEnemyToHit=randomAiToHit(missionEnemies.length)
                         damageDealt=Math.trunc(player.weapon.damage*0.75)
                         damageDealt=damageDealt-missionEnemies[i].armour.defense
@@ -206,7 +221,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                     }
                     
                     else if(player.level>=10 && player.level<15){
-                        firstEnemyToHit=randomAiToHit(missionEnemies.length)
+                        firstEnemyToHit=i
                         secondEnemyToHit=randomAiToHit(missionEnemies.length)
                         damageDealt=Math.trunc(player.weapon.damage*1.25)
                         damageDealt=damageDealt-missionEnemies[i].armour.defense
@@ -224,7 +239,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         setBattleLog(newLogMessage)
                     }
                     else if(player.level>=15){
-                        firstEnemyToHit=randomAiToHit(missionEnemies.length)
+                        firstEnemyToHit=i
                         secondEnemyToHit=randomAiToHit(missionEnemies.length)
                         damageDealt=Math.trunc(player.weapon.damage*1.5)
                         damageDealt=damageDealt-missionEnemies[i].armour.defense
@@ -249,7 +264,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             }
             
         }
-        else if(player.weapon.ability==="Flurry"){
+        else if(player.weapon.ability==="Flurry" && player.action_points>=apToUse){
             let damageDealt=0
             const newEnemies=[...missionEnemies]
             if(player.level>=1 && player.level<5){
@@ -267,18 +282,94 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         _id: messages[0]._id,
                         messages: newMessages
                     }]
-                    setBattleLog(newLogMessage)
+                    // setBattleLog(newLogMessage)
                     newEnemies[i].health-=damageDealt
                 }
-            }else if(player.level>=1 && player.level<5){
-
+            }else if(player.level>=5 && player.level<10){
+                for(let i=0;i<missionEnemies.length;i++){
+                    damageDealt=Math.trunc(player.weapon.damage*0.75)
+                    damageDealt=damageDealt-missionEnemies[i].armour.defense
+                    if(damageDealt<=0){
+                        damageDealt=2
+                    }
+                    
+                    //logUpdate
+                    const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
+                    newMessages.push(newMessage)
+                    const newLogMessage = [{
+                        _id: messages[0]._id,
+                        messages: newMessages
+                    }]
+                    // setBattleLog(newLogMessage)
+                    newEnemies[i].health-=damageDealt
+                }
+            }else if(player.level>=10 && player.level<15){
+                for(let i=0;i<missionEnemies.length;i++){
+                    damageDealt=Math.trunc(player.weapon.damage*1)
+                    damageDealt=damageDealt-missionEnemies[i].armour.defense
+                    if(damageDealt<=0){
+                        damageDealt=2
+                    }
+                    
+                    //logUpdate
+                    const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
+                    newMessages.push(newMessage)
+                    const newLogMessage = [{
+                        _id: messages[0]._id,
+                        messages: newMessages
+                    }]
+                    // setBattleLog(newLogMessage)
+                    newEnemies[i].health-=damageDealt
+                }
+            }else if(player.level>=15 ){
+                for(let i=0;i<missionEnemies.length;i++){
+                    damageDealt=Math.trunc(player.weapon.damage*1.25)
+                    damageDealt=damageDealt-missionEnemies[i].armour.defense
+                    if(damageDealt<=0){
+                        damageDealt=2
+                    }
+                    
+                    //logUpdate
+                    const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
+                    newMessages.push(newMessage)
+                    const newLogMessage = [{
+                        _id: messages[0]._id,
+                        messages: newMessages
+                    }]
+                    // setBattleLog(newLogMessage)
+                    newEnemies[i].health-=damageDealt
+                }
             }
+
             setMissionEnemies(newEnemies)
+        }else{
+            //logUpdate
+            const newMessage = { message: getTheCurrentDate()+ "You do not have enough AP to use an ability " }
+            newMessages.push(newMessage)
         }
+        //Companion Attack with delay
+        setTimeout(alliesTurn(newMessages),1000)
+        //Enemy Attack with delay
+        setTimeout(enemiesTurn(newMessages),1000)
+        //Delete dead companions from state
+        setTimeout(checkIfCompanionsAreAlive,1000)
+        //Delete dead enemies from state
+        setTimeout(checkIfEnemiesAreAlive,1000)
+        //Check if Player has won
+        setTimeout(checkIfPlayerHasWon,1000)
+        //Remove Action Points
+        if(player.action_points>=apToUse){
+            setTimeout(removeAP,1000)
+        }
+        const newLogMessage = [{
+            _id: messages[0]._id,
+            messages: newMessages
+        }]
+        setBattleLog(newLogMessage)
     }
     
-    const alliesTurn=()=>{
-        const newMessages = [...battleLog[0].messages]
+    const alliesTurn=(newMessages)=>{
+        // const newMessages = [...battleLog[0].messages]
         if(companions.length>0){
             for(let i=0;i<companions.length;i++){
                 if(companions[i].health>0){
@@ -299,7 +390,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                             _id: messages[0]._id,
                             messages: newMessages
                         }]
-                        setBattleLog(newLogMessage)
+                        // setBattleLog(newLogMessage)
                     }else{
                         const newMessage = { message: getTheCurrentDate()+companions[i].name+" missed"}
                         newMessages.push(newMessage)
@@ -307,25 +398,30 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                             _id: messages[0]._id,
                             messages: newMessages
                         }]
-                        setBattleLog(newLogMessage)
+                        // setBattleLog(newLogMessage)
                     }
                     
                     const newEnemies=[...missionEnemies]
                     newEnemies[enemyToHit].health-=damageDealt
                     setMissionEnemies(newEnemies)
                 }
+
             }
         }
+        return newMessages
     }
-    const enemiesTurn=()=>{
-        const newMessages = [...battleLog[0].messages]
+    const enemiesTurn=(newMessages)=>{
+        // const newMessages = [...battleLog[0].messages]
         if(missionEnemies.length>0){
+            const newCompanions=[...companions]
+            const newPlayer=Object.assign({},player)
             for(let i=0;i<missionEnemies.length;i++){
                 if(companions.length>0){
                     const playerOrAI=randInt()
                     if(playerOrAI<25){
                         //Player gets attacks
                         if(missionEnemies[i].health>0){
+                            console.log("gets to here")
                             const didhitInt=randomChanceToHit()
                             let damageDealt=0
                             if(missionEnemies[i].weapon.chance_to_hit>didhitInt){
@@ -340,7 +436,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                                     _id: messages[0]._id,
                                     messages: newMessages
                                 }]
-                                setBattleLog(newLogMessage)
+                                // setBattleLog(newLogMessage)
                             }else{
                                 const newMessage = { message: getTheCurrentDate()+missionEnemies[i].name+" missed"}
                                 newMessages.push(newMessage)
@@ -348,12 +444,12 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                                     _id: messages[0]._id,
                                     messages: newMessages
                                 }]
-                                setBattleLog(newLogMessage)
+                                // setBattleLog(newLogMessage)
                             }
                             
-                            const newPlayer=Object.assign({},player)
+                            // const newPlayer=Object.assign({},player)
                             newPlayer.health-=damageDealt
-                            setPlayer(newPlayer)
+                            // setPlayer(newPlayer)
                         }
                     }
                     else{
@@ -370,13 +466,13 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                                     damageDealt=2
                                 }
                                 //logUpdate
-                                const newMessage = { message: getTheCurrentDate()+missionEnemies[i].name+" attacked "+companions[companionToHit]+ " for "+damageDealt+" damage"}
+                                const newMessage = { message: getTheCurrentDate()+missionEnemies[i].name+" attacked "+companions[companionToHit].name+ " for "+damageDealt+" damage"}
                                 newMessages.push(newMessage)
                                 const newLogMessage = [{
                                     _id: messages[0]._id,
                                     messages: newMessages
                                 }]
-                                setBattleLog(newLogMessage)
+                                // setBattleLog(newLogMessage)
                             }else{
                                 const newMessage = { message: getTheCurrentDate()+missionEnemies[i].name+" missed"}
                                 newMessages.push(newMessage)
@@ -384,20 +480,22 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                                     _id: messages[0]._id,
                                     messages: newMessages
                                 }]
-                                setBattleLog(newLogMessage)
+                                // setBattleLog(newLogMessage)
                             }
-                            const newCompanions=[...companions]
+                            // const newCompanions=[...companions]
                             newCompanions[companionToHit].health-=damageDealt
-                            setCompanions(newCompanions)
+                            // setCompanions(newCompanions)
                         }
                     }
                 }        
                 else{
                     //Just attacks player
                     if(missionEnemies[i].health>0){
+                        console.log("gets to here")
                         const didhitInt=randomChanceToHit()
                         let damageDealt=0
                         if(missionEnemies[i].weapon.chance_to_hit>didhitInt){
+                            console.log("gets to here to hit")
                             const mitigatedDamage=player.armour.defense
                             damageDealt=missionEnemies[i].weapon.damage-mitigatedDamage
                             if(damageDealt<=0){
@@ -410,8 +508,9 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                                 _id: messages[0]._id,
                                 messages: newMessages
                             }]
-                            setBattleLog(newLogMessage)
+                            // setBattleLog(newLogMessage)
                         }else{
+                            console.log("gets to here miss")
                             const newMessage = { message: getTheCurrentDate()+missionEnemies[i].name+" missed"}
                             newMessages.push(newMessage)
                             const newLogMessage = [{
@@ -420,12 +519,16 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                             }]
                             setBattleLog(newLogMessage)
                         }
-                        const newPlayer=Object.assign({},player)
+                        console.log("gets to here end")
+                        // const newPlayer=Object.assign({},player)
                         newPlayer.health-=damageDealt
-                        setPlayer(newPlayer)
+                        // setPlayer(newPlayer)
                     }
                 }
             }
+            setPlayer(newPlayer)
+            setCompanions(newCompanions)
+            return newMessages
         }
     }
     const regainAP=()=>{
@@ -437,6 +540,54 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 newPlayer.action_points=newPlayer.max_ap
             }
             const newMessage = { message: getTheCurrentDate()+"You have regained 5 AP"}
+            newMessages.push(newMessage)
+            setPlayer(newPlayer)
+        }
+    }
+    const removeAP=()=>{
+        if(player.level>=1 && player.level<5){
+            const newMessages = [...battleLog[0].messages]
+            const newPlayer=Object.assign({},player)
+            
+            newPlayer.action_points-=10
+            if(newPlayer.action_points<=0){
+                    newPlayer.action_points=0
+            }
+            const newMessage = { message: getTheCurrentDate()+"You have used 10 AP"}
+            newMessages.push(newMessage)
+            setPlayer(newPlayer)
+            
+        }else if(player.level>=5 && player.level<10){
+            const newMessages = [...battleLog[0].messages]
+            const newPlayer=Object.assign({},player)
+            
+            newPlayer.action_points-=15
+            if(newPlayer.action_points<=0){
+                    newPlayer.action_points=0
+            }
+            const newMessage = { message: getTheCurrentDate()+"You have used 15 AP"}
+            newMessages.push(newMessage)
+            setPlayer(newPlayer)
+        }else if(player.level>=10 && player.level<15){
+            const newMessages = [...battleLog[0].messages]
+            const newPlayer=Object.assign({},player)
+            
+            newPlayer.action_points-=20
+            if(newPlayer.action_points<=0){
+                    newPlayer.action_points=0
+            }
+            const newMessage = { message: getTheCurrentDate()+"You have used 20 AP"}
+            newMessages.push(newMessage)
+            setPlayer(newPlayer)
+        }else if(player.level>=15){
+            const newMessages = [...battleLog[0].messages]
+            const newPlayer=Object.assign({},player)
+            
+            newPlayer.action_points-=25
+            if(newPlayer.action_points<=0){
+                    newPlayer.action_points=0
+            }
+            const newMessage = { message: getTheCurrentDate()+"You have used 25 AP"}
             newMessages.push(newMessage)
             setPlayer(newPlayer)
         }
