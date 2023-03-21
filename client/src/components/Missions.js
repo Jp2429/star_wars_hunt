@@ -14,6 +14,11 @@ const Missions=()=>{
 
     return(
         <section id="missions-section">
+
+            <div id="main-menu-button-mission">
+                <a href='/main-menu'>Main Menu</a>
+           </div>
+           <div id="missions-select">
             <div id='tatooine'>
                 <p>Tatooine - Level 1</p>
                 <form>
@@ -21,11 +26,34 @@ const Missions=()=>{
                         <option value = "" selected disabled>Select a mission</option>
                         <option value="/tatooine-bounty-hunt">Hunt a Bounty</option>
                     </select>
-                    {selectedTatooineMission ?<a onClick={onClick} href={selectedTatooineMission}>Launch Mission</a>:<p>Please select a mission</p>}
+                    {selectedTatooineMission ?<a id="launch" onClick={onClick} href={selectedTatooineMission}>Launch Mission</a>:<p id="select">Please select a mission</p>}
                 </form>
             </div>
             <div>
 
+            </div>
+
+            <div id='coruscant'>
+                <p>Coruscant - Level 5</p>
+                <p>Coming soon to a galaxy far, far away!</p>
+                <form>
+                   
+                </form>
+            </div>
+            <div id='naboo'>
+            <p>Naboo - Level 10</p>
+                <p>Coming soon to a galaxy far, far away!</p>
+                <form>
+                   
+                </form>
+            </div>
+            <div id="kashyyyk">
+            <p>Kashyyyk - Level 15</p>
+                <p>Coming soon to a galaxy far, far away!</p>
+                <form>
+                   
+                </form>
+            </div>
             </div>
 
 
