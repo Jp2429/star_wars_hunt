@@ -623,8 +623,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
             <div id="display-enemies">
-                <p>Name: {enemy.name}</p>
-                {enemy.name==="Thug"?<p>Health: {enemy.health}/150</p>:<p>Health: {enemy.health}/250</p>}
+                <p>{enemy.name}</p>
+                {enemy.name==="Thug"?<p>HP: {enemy.health}/150</p>:<p>HP: {enemy.health}/250</p>}
                 <p>Target Enemy</p>
                 <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
             </div>
@@ -634,9 +634,9 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
 
     const displayCompanions=companions.map((companion)=>{
         return(
-            <div>
-                <p>Name: {companion.name}</p>
-                <p>Health: {companion.health}/{companion.max_health}</p>
+            <div id="party-stats">
+                <p>{companion.name}</p>
+                <p>HP: {companion.health}/{companion.max_health}</p>
             </div>
         )
     })
@@ -666,13 +666,14 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 </div>
                 <div id="party-details">
                     {player&&
-                        <div>
-                            <p>Name: {player.name}</p>
-                            <p>Health: {player.health}/{player.max_health}</p>
-                            <p>Action Points: {player.action_points}/{player.max_ap}</p>
+                        <div id="player-stats">
+                            <p>{player.name}</p>
+                            <p>HP: {player.health}/{player.max_health}</p>
+                            <p>AP: {player.action_points}/{player.max_ap}</p>
                         </div>
                     }
-                    {displayCompanions}
+                        {displayCompanions}
+                    
                 </div>
             </div>
             
