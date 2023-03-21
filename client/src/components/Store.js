@@ -28,7 +28,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:getTheCurrentDate()+"You have bought this item: "+item.weapon.name }
+            const newMessage={message:getTheCurrentDate()+"Black Market Vendor: You won't be disapointed, I use that model myself ("+item.weapon.name+" has been added to your inventory)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -37,7 +37,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:getTheCurrentDate()+"You could not buy this item: "+item.weapon.name }
+            const newMessage={message:getTheCurrentDate()+"Black Market Vendor: This isn't a charity. No credits, no sale ("+item.weapon.name+" could not be purchased)" }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -71,7 +71,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             armour:player.armour
         }
         updatePlayer(updatedPlayer)
-        const newMessage={message:getTheCurrentDate()+"You have sold this item: "+item.weapon.name }
+        const newMessage={message:getTheCurrentDate()+"Black Market Vendor: I'll take that off your hands. Might make a small profit too ("+item.weapon.name+" has been removed from your inventory)"}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -104,7 +104,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage={message:getTheCurrentDate()+"You have sold this item: "+item.armour.name }
+        const newMessage={message:getTheCurrentDate()+"Black Market Vendor: I'll take that off your hands. Might make a small profit too ("+item.armour.name+" has been removed from your inventory)"}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -137,7 +137,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"You have bought this item: "+item.armour.name }
+            const newMessage={message:"Black Market Vendor: You won't be disapointed, I use that model myself ("+item.armour.name+" has been added to your inventory)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -146,7 +146,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"You could not buy this item: "+item.armour.name }
+            const newMessage={message:"Black Market Vendor: This isn't a charity. No credits, no sale ("+item.armour.name+" could not be purchased)" }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -179,7 +179,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage={message:getTheCurrentDate()+"You have bought a Stim Pack "}
+        const newMessage={message:getTheCurrentDate()+"A stimpack has been added to your healing pouch"}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={

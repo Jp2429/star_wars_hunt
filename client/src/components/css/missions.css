@@ -25,7 +25,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height:200px;
+    height:320px;
     width:60%;
     margin:20px;
     padding:15px;
@@ -44,7 +44,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height:200px;
+    height:320px;
     width:60%;
     margin:20px;
     padding:15px;
@@ -63,7 +63,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height:200px;
+    height:320px;
     width:60%;
     margin:20px;
     padding:15px;
@@ -83,7 +83,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height:200px;
+    height:320px;
     width:60%;
     margin:20px;
     padding:15px;
@@ -91,7 +91,7 @@
     background-color: rgb(53, 53, 122);
     opacity: 0.9;
     color: whitesmoke;
-    background-image: url(./images/Battle/KashyyykBattle.jpeg);
+    background-image: url(./images/Battle/KashyyykBattle2.png);
     background-size:cover;
     font-weight: bold;
     text-shadow: 2px 2px black;
@@ -129,7 +129,7 @@
     border-radius: 15px;
     margin-bottom: 10px;
     margin-left:60px;
-    margin-top:-250px;
+    margin-top:-200px;
 
 }
         
@@ -137,4 +137,9 @@
     color:whitesmoke;
     text-decoration: none;
     text-align:center;
+}
+
+#planet-description{
+    margin-top: 20px;
+    font-size: 12px;
 }

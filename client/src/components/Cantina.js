@@ -29,7 +29,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 armour:player[0].armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:getTheCurrentDate()+"You have hired "+hunter.name}
+            const newMessage={message:getTheCurrentDate()+hunter.name+": Time to make some credits. Let's get hunting("+hunter.name+" has joined your party)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -38,7 +38,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:getTheCurrentDate()+"Could not hire "+hunter.name}
+            const newMessage={message:getTheCurrentDate()+hunter.name+": Get out of here, I'm not interested (Your party is full or you have insufficient credits)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -53,7 +53,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
         const idToDelete=member._id
         removeFromParty(idToDelete)
         addToAvailable(member)
-        const newMessage={message:getTheCurrentDate()+member.name+" has been dismissed"}
+        const newMessage={message:getTheCurrentDate()+member.name+": Let me know if you need my services again ("+member.name+"has been removed from party)"}
         const newMessages=[...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage={
@@ -86,7 +86,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:getTheCurrentDate()+"You have healed yourself"}
+            const newMessage={message:getTheCurrentDate()+"Bartender: Have a drink and heal your wounds in one of our bacta tanks (You have been healed to full HP)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -95,7 +95,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:getTheCurrentDate()+"You cannot be healed, either you are at max health or you cannot afford our services"}
+            const newMessage={message:getTheCurrentDate()+"Bartender: I have other customers, stop wasting my time (You are at full health or have insufficient credits)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={

@@ -24,7 +24,7 @@ const Inventory = ({ partyMembers, armourInventory, weaponInventory, updatePlaye
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage = { message:getTheCurrentDate()+ "You have equipped: " + newArmour.name }
+        const newMessage = { message:getTheCurrentDate()+newArmour.name+" has been equipped" }
         const newMessages = [...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage = {
@@ -55,7 +55,7 @@ const Inventory = ({ partyMembers, armourInventory, weaponInventory, updatePlaye
         }
         updatePlayer(updatedPlayer)
 
-        const newMessage = { message: getTheCurrentDate()+"You have equipped: " + newWeapon.name }
+        const newMessage = { message: getTheCurrentDate()+newWeapon.name+" has been equipped"}
         const newMessages = [...messages[0].messages]
         newMessages.push(newMessage)
         const newLogMessage = {
