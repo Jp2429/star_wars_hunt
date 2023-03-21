@@ -1,6 +1,11 @@
 import './css/mainmenu.css'
 
+
+
 const MainMenu = () =>{
+    
+
+    
     return(
         <section id="main-menu">
             <div id="exit-button">
