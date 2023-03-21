@@ -858,8 +858,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 </div>
             </section>:
             <section>
-                {player.health<=0?<button onClick={onDefeatClick}>You have defeated, return to hideout</button>:null}
-                {missionEnemies.length===0?<button onClick={onVictoryClick}>You are Victorious, return to hideout</button>:null}
+                {player.health<=0?<button id="end-battle" onClick={onDefeatClick}>You have defeated. Return to hideout</button>:null}
+                {missionEnemies.length===0?<button id="end-battle" onClick={onVictoryClick}>You are victorious. Return to hideout</button>:null}
             </section>
             }
         </section>
