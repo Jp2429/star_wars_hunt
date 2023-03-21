@@ -53,5 +53,11 @@
 
   overflow: scroll;
 }
+#log>p{
+  margin-bottom: -1px;
+  margin-top: -1px;
+  font-size: 15px;
+
+}
 
 

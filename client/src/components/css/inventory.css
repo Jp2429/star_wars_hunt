@@ -50,15 +50,26 @@
     background-color:rgb(53, 53, 122);
 }
 
-#armours{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+.armours{
+    border-bottom: 2px solid rgb(119, 119, 243);
 }
-#weapons{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+.armours>button{
+    padding:5px;
+    width:75px;
+    margin-bottom: 5px;
+}
+.weapons{
+    
+    border-bottom: 2px solid rgb(119, 119, 243);
+    
+}
+.weapons>button{
+    padding:5px;
+    width:75px;
+    margin-bottom: 5px;
+}
+.name{
+    font-weight: bold;
 }
 #inventories{
     display:flex;

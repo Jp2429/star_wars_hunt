@@ -221,10 +221,12 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
     const storeWeaponData=storeWeapons.map((weapon)=>{
             return(
                 <div className="weapons">
-                    <p>Weapon: {weapon.weapon.name}</p>
+                    <p className="name">Weapon: {weapon.weapon.name}</p>
+                    <p>Damage: {weapon.weapon.damage}</p>
+                    <p>Ability: {weapon.weapon.ability}</p>
                     <p>Cost: {weapon.weapon.cost} credits</p>
                     <button onClick={()=>onWeaponBuyClick(weapon)}>Buy</button>
-                    <hr></hr>
+                    
                 </div>
             )
         })
@@ -232,10 +234,11 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
     const storeArmourData=storeArmours.map((armour)=>{
             return(
                 <div className="armours">
-                    <p>Armour: {armour.armour.name}</p>
+                    <p className="name">Armour: {armour.armour.name}</p>
+                    <p>Defense: {armour.armour.defense}</p>
                     <p>Cost: {armour.armour.cost} credits</p>
                     <button onClick={()=>onArmourClick(armour)}>Buy</button>
-                    <hr></hr>
+                    
                 </div>
             )
         })
@@ -251,7 +254,9 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             const isEquipped=isEquippedWeapon()
             return(
                 <div className="weapons">
-                    <p>{weapon.weapon.name}</p>
+                    <p className="name">{weapon.weapon.name}</p>
+                    <p>Damage: {weapon.weapon.damage}</p>
+                    <p>Ability: {weapon.weapon.ability}</p>
                     {isEquipped?<p>Equipped</p>:null}
                     {isEquipped?null:<button onClick={()=>onStoreWeaponClick(weapon)}>Sell</button>}
                 </div>
@@ -269,7 +274,8 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             const isEquipped=isEquippedArmour()
             return(
                 <div className="armours">
-                    <p>{armour.armour.name}</p>
+                    <p className="name">{armour.armour.name}</p>
+                    <p>Defense: {armour.armour.defense}</p>
                     {isEquipped?<p>Equipped</p>:null}
                     {isEquipped?null:<button onClick={()=>onStoreArmourClick(armour)}>Sell</button>}
                 </div>

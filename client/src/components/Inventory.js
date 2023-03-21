@@ -107,8 +107,9 @@ const Inventory = ({ partyMembers, armourInventory, weaponInventory, updatePlaye
         const isEquipped = isEquippedWeapon()
         return (
             <div className="weapons">
-                <p>{weapon.weapon.name}</p>
-                {/* {isEquipped?<p>Equipped</p>:null} */}
+                <p className="name">{weapon.weapon.name}</p>
+                <p>Damage: {weapon.weapon.damage}</p>
+                <p>Ability: {weapon.weapon.ability}</p>
                 {isEquipped ? <p>Equipped</p> : <button onClick={() => onWeaponEquipClick(weapon)}>Equip</button>}
             </div>
         )
@@ -125,8 +126,9 @@ const Inventory = ({ partyMembers, armourInventory, weaponInventory, updatePlaye
         const isEquipped = isEquippedArmour()
         return (
             <div className="armours">
-                <p>{armour.armour.name}</p>
-                {/* {isEquipped?<p>Equipped</p>:null} */}
+                <p className="name">{armour.armour.name}</p>
+                <p>Defense: {armour.armour.defense}</p>
+                
                 {isEquipped ? <p>Equipped</p> : <button onClick={() => onArmourEquipClick(armour)}>Equip</button>}
             </div>
         )

@@ -138,7 +138,9 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
     const bountyHunterData=bountyHunters.map((hunter)=>{
         return(
             <div id="bh">
-                <p>{hunter.name}</p>
+                <p className='name'>{hunter.name}</p>
+                <p>Health: {hunter.health}/{hunter.max_health}</p>
+                <p>Level: {hunter.level}</p>
                 <p>Cost: {hunter.credits} credits</p>
                 <button onClick={()=>onHireClick(hunter)}>Hire</button>
             </div>
@@ -147,7 +149,10 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
     const memberData=partyMembers.map((member)=>{
         return(
             <div id="members">
-                <p>{member.name}</p>
+                {member.is_player?<p className='name'>{member.name} (You)</p>:<p className='name'>{member.name}</p>}
+                <p>Health: {member.health}/{member.max_health}</p>
+                <p>Action Points: {member.action_points}/{member.max_ap}</p>
+                <p>Level: {member.level}</p>
                 {member.is_player?null:<button onClick={()=>onFireClick(member)}>Dismiss</button>}
             </div>
         )
