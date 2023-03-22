@@ -36,6 +36,7 @@
     text-shadow: 2px 2px black;
     background-image: url(./images/Battle/TatooineBattle2.png);
     background-size:cover;
+    background-position: -100px;
     border-radius:10px;
 }
 
@@ -54,6 +55,7 @@
     color: whitesmoke;
     background-image: url(./images/Battle/CoruscantBattle.jpg);
     background-size:cover;
+    background-position: -100px;
     font-weight: bold;
     text-shadow: 2px 2px black;
     border-radius:10px;
@@ -73,6 +75,7 @@
     color: whitesmoke;
     background-image: url(./images/Battle/NabooBattle.jpg);
     background-size:cover;
+    background-position: -100px;
     font-weight: bold;
     text-shadow: 2px 2px black;
     border-radius:10px;
@@ -93,6 +96,7 @@
     color: whitesmoke;
     background-image: url(./images/Battle/KashyyykBattle2.png);
     background-size:cover;
+    background-position: -100px;
     font-weight: bold;
     text-shadow: 2px 2px black;
     border-radius:10px;
