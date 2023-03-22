@@ -544,6 +544,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const regainAP=()=>{
         const newMessages = [...battleLog[0].messages]
         const newPlayer=Object.assign({},player)
+        console.log("health",newPlayer.health)
         if(newPlayer.action_points<newPlayer.max_ap){
             newPlayer.action_points+=5
             if(newPlayer.action_points>=newPlayer.max_ap){
@@ -731,14 +732,22 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const onHealClick=()=>{
         const newMessages = [...battleLog[0].messages]
         const newPlayer=Object.assign({},player)
-        if(newPlayer.stim_count>0 && newPlayer.health<newPlayer.max_health){
+        if(newPlayer.stim_count>0 && newPlayer.health<newPlayer.max_health && newPlayer.action_points>=5){
+            console.log("gets to here")
             newPlayer.stim_count-=1
             newPlayer.health+=50
+            newPlayer.action_points-=5
             if(newPlayer.health>=newPlayer.max_health){
                 newPlayer.health=newPlayer.max_health
             }
-            const newMessage = { message: getTheCurrentDate()+"You have healed 50 HP"}
+            console.log("healing gets to here")
+            const newMessage = { message: getTheCurrentDate()+"You have used a stim pack and 5 AP to heal 50 HP"}
             newMessages.push(newMessage)
+            const newLogMessage = [{
+                _id: messages[0]._id,
+                messages: newMessages
+            }]
+            setBattleLog(newLogMessage)
             setPlayer(newPlayer)
         }
     }
@@ -786,12 +795,22 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
 
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
-            <div id="display-enemies">
-                <p>{enemy.name}</p>
-                {enemy.name==="Thug"?<p id="thug">HP: {enemy.health}/150</p>:<p id="thug-elite">HP: {enemy.health}/250</p>}
-                <p>Target Enemy</p>
-                <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
-            </div>
+            <section>
+                {enemy.name==="Thug"?<div id="display-enemies">
+                    <p>{enemy.name}</p>
+                    <p >HP: {enemy.health}/150</p>
+                    <p>Target Enemy</p>
+                    <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
+                </div>:
+                <div id="display-enemies-elite">
+                    <p>{enemy.name}</p>
+                    <p id="thug-elite">HP: {enemy.health}/250</p>
+                    <p>Target Enemy</p>
+                    <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
+                </div>
+                }
+            </section>
+        
             
         )
     })
@@ -799,7 +818,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const displayCompanions=companions.map((companion)=>{
         return(
             <div id="party-stats">
-                <p>{companion.name}</p>
+                <p className="name">{companion.name}</p>
                 <p>HP: {companion.health}/{companion.max_health}</p>
             </div>
         )
@@ -843,13 +862,15 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                     </div>
                     <div id="battle-log">
                         {displayBattleLogMessages}
+                        
                     </div>
                     <div id="party-details">
                         {player&&
                             <div id="player-stats">
-                                <p>{player.name}</p>
+                                <p className="name">{player.name}</p>
                                 <p>HP: {player.health}/{player.max_health}</p>
                                 <p>AP: {player.action_points}/{player.max_ap}</p>
+                                <p>Stim Packs: {player.stim_count}</p>
                             </div>
                         }
                             {displayCompanions}

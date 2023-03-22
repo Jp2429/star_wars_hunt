@@ -12,7 +12,7 @@
     flex-direction: row;
     padding:5px;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     opacity: 0.7;
     border:2px solid rgb(119, 119, 243);
     background-color: rgb(53, 53, 122);
@@ -20,31 +20,56 @@
     
 }
 #display-enemies{
+    background-image: url(./images/Thug.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right:30px;
+    border:2px solid rgb(243, 119, 119);
+    background-color: rgb(157, 24, 24);
+    text-shadow: 2px 2px black;
+    border-radius: 10px;
+    opacity: 0.9;
+    color: white;
+    padding:15px;
+    margin:20px;
+    width: 90%;
+}
+#display-enemies-elite{
+    background-image: url(./images/ThugElite.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-right:30px;
     border:2px solid rgb(243, 119, 119);
     background-color: rgb(157, 24, 24);
     border-radius: 10px;
     opacity: 0.9;
     color: whitesmoke;
+    text-shadow: 2px 2px black;
     padding:15px;
     margin:20px;
-    width: 60%;
+    width: 90%;
 }
 
 #display-enemies>p{
 text-align: center;
 
 }
+#display-enemies-elite>p{
+    text-align: center;
+    
+    }
 
 #enemy-radio{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 105px;
+    margin-left:47%;
+    background-color: brown;
+    /* left:50%; */
 }
 
 #action-buttons{
-    margin-right:50px;
+    margin-right:25px;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -58,6 +83,7 @@ text-align: center;
 }
 #target-p{
     font-size: 14px;
+    text-shadow: 2px 2px black;
 }
 
 .selected-buttons{
@@ -84,8 +110,8 @@ text-align: center;
     border-radius: 10px;
     color: whitesmoke;
     opacity: 0.9;
-    width: 45%;
-    height: 150px;
+    width: 42%;
+    height: 175px;
     display: flex;
     justify-content: center;
     flex-direction:column-reverse;
@@ -132,12 +158,16 @@ text-align: center;
     border-radius: 10px;
     opacity: 0.9;
     color: whitesmoke;
+    text-shadow: 2px 2px black;
     padding:10px;
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
-    height:150px;
+    height:175px;
 
+}
+#player-stats>p{
+    margin-top: -7px;
 }
 
 #party-stats{
@@ -147,11 +177,12 @@ text-align: center;
     border-radius: 10px;
     opacity: 0.9;
     color: whitesmoke;
+    text-shadow: 2px 2px black;
     padding:10px;
     display: flex;
     justify-content:space-evenly;
     flex-direction: column;
-    height:150px;
+    height:175px;
 }
 
 #end-battle{
@@ -171,7 +202,7 @@ text-align: center;
 }
 
 #thug{
-background-image: url(./images/Thug.jpg);
+background-image: url(./images/ThugSmall.png);
 
 
 }
