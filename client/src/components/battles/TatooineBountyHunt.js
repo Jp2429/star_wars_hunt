@@ -836,13 +836,13 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
             <section>
-                {enemy.name==="Thug"?<div id="display-enemies">
+                {enemy.name==="Thug"?<div id="display-thug-enemies">
                     <p>{enemy.name}</p>
                     <p >HP: {enemy.health}/150</p>
                     <p>Target Enemy</p>
                     <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
                 </div>:
-                <div id="display-enemies-elite">
+                <div id="display-thug-enemies-elite">
                     <p>{enemy.name}</p>
                     <p id="thug-elite">HP: {enemy.health}/250</p>
                     <p>Target Enemy</p>
@@ -871,7 +871,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     }
 
     return(
-        <section id="battle-section">
+        <section id="tatooine-battle-section">
             {!isComplete()?<section>
                 <div id="enemies">
                         {displayEnemiesForm}
