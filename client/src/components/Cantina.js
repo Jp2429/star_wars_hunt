@@ -152,6 +152,7 @@ const Cantina=({bountyHunters,partyMembers,messages,removeFromAvailable,addToPar
                 {member.is_player?<p className='name'>{member.name} (You)</p>:<p className='name'>{member.name}</p>}
                 <p>Health: {member.health}/{member.max_health}</p>
                 <p>Action Points: {member.action_points}/{member.max_ap}</p>
+                <p>XP: {member.cur_xp}/{member.xp_to_level_up}</p>
                 <p>Level: {member.level}</p>
                 {member.is_player?null:<button onClick={()=>onFireClick(member)}>Dismiss</button>}
             </div>

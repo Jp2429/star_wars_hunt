@@ -169,3 +169,9 @@ text-align: center;
 #end-battle:hover{
     cursor:pointer;
 }
+
+#thug{
+background-image: url(./images/Thug.jpg);
+
+
+}

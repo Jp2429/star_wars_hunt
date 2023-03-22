@@ -788,7 +788,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         return(
             <div id="display-enemies">
                 <p>{enemy.name}</p>
-                {enemy.name==="Thug"?<p>HP: {enemy.health}/150</p>:<p>HP: {enemy.health}/250</p>}
+                {enemy.name==="Thug"?<p id="thug">HP: {enemy.health}/150</p>:<p id="thug-elite">HP: {enemy.health}/250</p>}
                 <p>Target Enemy</p>
                 <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
             </div>
