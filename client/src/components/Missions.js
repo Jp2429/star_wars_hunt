@@ -1,17 +1,23 @@
 import { useState } from "react"
 import "./css/missions.css"
 
-const Missions=()=>{
+const Missions=({partyMembers})=>{
     const[selectedTatooineMission,setSelectedTatooineMission]=useState("")
+    const[selectedCoruscantMission,setSelectedCoruscantMission]=useState("")
 
     const onLvl1Change=(evt)=>{
         let curSelectedMission = evt.target.value
         setSelectedTatooineMission(curSelectedMission)
     }
+    const onLvl5Change=(evt)=>{
+        let curSelectedMission = evt.target.value
+        setSelectedCoruscantMission(curSelectedMission)
+    }
     const onClick=()=>{
         setSelectedTatooineMission("")
+        setSelectedCoruscantMission("")
     }
-
+    const player=partyMembers.find(player=>player.is_player)
     return(
         <section id="missions-section">
 
@@ -38,9 +44,14 @@ const Missions=()=>{
 
             <div id='coruscant'>
                 <p>Coruscant - Level 5</p>
-                <p>Coming soon to a galaxy far, far away!</p>
-                <form>
-                </form>
+                {/* <p>Coming soon to a galaxy far, far away!</p> */}
+                {player.level>=5 ?<form>
+                    <select onChange={onLvl5Change} name='tatooine-select' value={selectedCoruscantMission}>
+                        <option value = "" selected disabled>Select a mission</option>
+                        <option value="/coruscant-bounty-hunt">Bounty Hunt</option>
+                    </select>
+                    {selectedCoruscantMission ?<a id="launch" onClick={onClick} href={selectedCoruscantMission}>Launch Mission</a>:<p id="select">Please select a mission</p>}
+                </form>:<p>You need to level up before you can take missions here</p>}
                 <div id="planet-description">
                 Coruscant is the vibrant heart and capital of the galaxy during the age of the Empire, featuring a diverse mix of cultures and citizens spread over hundreds of levels. Once the home of the main Jedi Temple -- the central hub of Jedi training and learning for over a thousand generations and the repository of the Jedi Archives -- these traditions ended when the planet bore witness to Order 66.
                 </div>

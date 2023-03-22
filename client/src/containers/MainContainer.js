@@ -9,6 +9,7 @@ import Inventory from '../components/Inventory'
 import Store from '../components/Store'
 import Cantina from '../components/Cantina'
 import TatooineBountyHunt from '../components/battles/TatooineBountyHunt'
+import CoruscantBountyHunt from '../components/battles/CoruscantBountyHunt'
 import {getEnemies, getOneEnemy, updateOneEnemy, resetEnemies} from "../services/EnemyService"
 import {getMembers, getOneMember, updateOneMember, deleteMember ,resetParty,deleteParty, postMember} from "../services/PartyService"
 import {getMessages, getOneMessage, updateOneMessage, resetLog, postMessage, deleteMessage } from "../services/LogService"
@@ -229,8 +230,8 @@ const MainContainer = () =>{
             <Routes>
                 <Route path='/' element={<Start  listOfPartyMembers = {listOfPartyMembers} />}/>
                 <Route path='/new-character' element={<NewCharacter createPlayer = {createPlayer} listOfPartyMembers = {listOfPartyMembers} />}/>
-                <Route path='/main-menu' element={<MainMenu/>}/>
-                <Route path='/missions' element={<Missions/>}/>
+                {listOfPartyMembers.length&&<Route path='/main-menu' element={<MainMenu messages={listOfLogMessages}/>}/>}
+                {listOfPartyMembers.length&&<Route path='/missions' element={<Missions partyMembers={listOfPartyMembers}/>}/>}
 
                 <Route path='/cantina' element={<Cantina bountyHunters={listOfBountyHunters} partyMembers={listOfPartyMembers} messages={listOfLogMessages} removeFromAvailable={removeFromAvailable} addToParty={addToParty} updatePlayer={updatePlayer} updateLog={updateLog} removeFromParty={removeFromParty} addToAvailable={addToAvailable}/>}/>
 
@@ -252,6 +253,17 @@ const MainContainer = () =>{
                 {listOfPartyMembers.length &&
                 <Route path='/tatooine-bounty-hunt'
                     element={<TatooineBountyHunt
+                    messages={listOfLogMessages} 
+                    partyMembers={listOfPartyMembers} 
+                    enemies={listOfEnemies}
+                    updateLog={updateLog}
+                    updatePlayer={updatePlayer}
+                    />}
+                />
+                }
+                {listOfPartyMembers.length &&
+                <Route path='/coruscant-bounty-hunt'
+                    element={<CoruscantBountyHunt
                     messages={listOfLogMessages} 
                     partyMembers={listOfPartyMembers} 
                     enemies={listOfEnemies}

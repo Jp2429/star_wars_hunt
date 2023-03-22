@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { redirect } from "react-router-dom"
-import '../css/TatooineBountyHunt.css'
+import '../css/CoruscantBountyHunt.css'
 
-const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer})=>{
+const CoruscantBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer})=>{
 
     const[player,setPlayer]=useState({})
     const[missionEnemies,setMissionEnemies]=useState([])
@@ -664,11 +664,11 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             const newPlayer=Object.assign({},player)
             const newMessage = { message: getTheCurrentDate()+"You have won the battle"}
             newMessages.push(newMessage)
-            newPlayer.credits+=500
-            const newCreditMessage = { message: getTheCurrentDate()+"You have gained 500 credits"}
+            newPlayer.credits+=1000
+            const newCreditMessage = { message: getTheCurrentDate()+"You have gained 1000 credits"}
             newMessages.push(newCreditMessage)
-            newPlayer.cur_xp+=50
-            const newXpMessage = { message: getTheCurrentDate()+"50 XP gained"}
+            newPlayer.cur_xp+=150
+            const newXpMessage = { message: getTheCurrentDate()+"150 XP gained"}
             newMessages.push(newXpMessage)
             newPlayer.action_points=newPlayer.max_ap
 
@@ -761,13 +761,13 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         if(newPlayer.stim_count>0 && newPlayer.health<newPlayer.max_health && newPlayer.action_points>=5){
             console.log("gets to here")
             newPlayer.stim_count-=1
-            newPlayer.health+=50
+            newPlayer.health+=75
             newPlayer.action_points-=5
             if(newPlayer.health>=newPlayer.max_health){
                 newPlayer.health=newPlayer.max_health
             }
             console.log("healing gets to here")
-            const newMessage = { message: getTheCurrentDate()+"You have used a stim pack and 5 AP to heal 50 HP"}
+            const newMessage = { message: getTheCurrentDate()+"You have used a stim pack and 5 AP to heal 75 HP"}
             newMessages.push(newMessage)
             const newLogMessage = [{
                 _id: messages[0]._id,
@@ -800,7 +800,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     }
 
     const loadData=()=>{
-        const filterLevel1Enemies=enemies.filter(enemy=>enemy.level===1)
+        const filterLevel1Enemies=enemies.filter(enemy=>enemy.level===5)
         setMissionEnemies(filterLevel1Enemies)
         const findPlayer=partyMembers.find(player=>player.is_player)
         setPlayer(findPlayer)
@@ -836,15 +836,15 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
             <section>
-                {enemy.name==="Thug"?<div id="display-enemies">
+                {enemy.name==="Black Sun Gangster"?<div id="display-enemies">
                     <p>{enemy.name}</p>
-                    <p >HP: {enemy.health}/150</p>
+                    <p >HP: {enemy.health}/250</p>
                     <p>Target Enemy</p>
                     <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
                 </div>:
                 <div id="display-enemies-elite">
                     <p>{enemy.name}</p>
-                    <p id="thug-elite">HP: {enemy.health}/250</p>
+                    <p id="thug-elite">HP: {enemy.health}/300</p>
                     <p>Target Enemy</p>
                     <input onChange={()=>onChange(enemy)} type="radio" id="enemy-radio" name="enemy" checked={targetedEnemy._id===enemy._id} value={enemy._id}/>  
                 </div>
@@ -927,4 +927,4 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     
     )
 }
-export default TatooineBountyHunt
+export default CoruscantBountyHunt

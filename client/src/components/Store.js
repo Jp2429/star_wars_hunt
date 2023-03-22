@@ -137,7 +137,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 armour:player.armour
             }
             updatePlayer(updatedPlayer)
-            const newMessage={message:"Black Market Vendor: You won't be disapointed, I use that model myself ("+item.armour.name+" has been added to your inventory)"}
+            const newMessage={message:getTheCurrentDate()+"Black Market Vendor: You won't be disapointed, I use that model myself ("+item.armour.name+" has been added to your inventory)"}
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -146,7 +146,7 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
             }
             updateLog(newLogMessage)
         }else{
-            const newMessage={message:"Black Market Vendor: This isn't a charity. No credits, no sale ("+item.armour.name+" could not be purchased)" }
+            const newMessage={message:getTheCurrentDate()+"Black Market Vendor: This isn't a charity. No credits, no sale ("+item.armour.name+" could not be purchased)" }
             const newMessages=[...messages[0].messages]
             newMessages.push(newMessage)
             const newLogMessage={
@@ -311,7 +311,9 @@ const Store=({messages,partyMembers, armourInventory, weaponInventory, storeWeap
                 {filterPlayer?<p id="credits">Credits: {filterPlayer.credits}</p>:null}
             </div>
             <div id="log">
-                {logMessages}
+                
+                    {logMessages}
+                
             </div>
         </section>
     )

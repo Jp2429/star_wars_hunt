@@ -51,7 +51,10 @@
   flex-direction:column-reverse;
   padding: 15px;
 
-  overflow: scroll;
+  overflow:scroll;
+}
+#log-anchor{
+  overflow:auto;
 }
 #log>p{
   margin-bottom: -1px;

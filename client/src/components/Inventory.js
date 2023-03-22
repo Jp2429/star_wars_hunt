@@ -159,7 +159,10 @@ const Inventory = ({ partyMembers, armourInventory, weaponInventory, updatePlaye
                 {player ? <p id="credits" >Credits: {player.credits}</p> : null}
             </div>
             <div id="log">
-                {logMessages}
+                
+                    {logMessages}
+                
+                
             </div>
         </section>
     )
