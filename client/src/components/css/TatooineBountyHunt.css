@@ -1,11 +1,11 @@
-#battle-section{
+#tatooine-battle-section{
     display:flex;
     flex-direction: column;
     background-image: url(./images/Battle/TatooineBattle2.png);
     padding: 40px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 520px;
+    height: 550px;
 }
 #enemies{
     display:flex;
@@ -19,7 +19,7 @@
     border-radius: 10px;
     
 }
-#display-enemies{
+#display-thug-enemies{
     background-image: url(./images/Thug.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,7 +34,7 @@
     margin:20px;
     width: 90%;
 }
-#display-enemies-elite{
+#display-thug-enemies-elite{
     background-image: url(./images/ThugElite.png);
     background-repeat: no-repeat;
     background-size: cover;
