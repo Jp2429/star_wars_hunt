@@ -811,6 +811,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     }
     
     const displayBattleLogMessages=battleLog.map((message)=>{
+        console.log(message)
         return message.messages.map((logMessage)=>{
             return (
                 <p> {logMessage.message}</p>
@@ -869,7 +870,13 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         }
         return false
     }
-
+    const isReady=()=>{
+        if(battleLog==={}){
+            return true
+        }
+        return false
+    }
+    const isItReady=isReady()
     return(
         <section id="tatooine-battle-section">
             {!isComplete()?<section>
@@ -900,10 +907,15 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         </div>
                         
                     </div>
+                    {!isItReady?
                     <div id="battle-log">
                         {displayBattleLogMessages}
                         
+                    </div>:
+                    <div>
+                        <p>Loading</p>
                     </div>
+                    }
                     <div id="party-details">
                         {player&&
                             <div id="player-stats">

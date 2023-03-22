@@ -222,6 +222,12 @@ const MainContainer = () =>{
         updatedListOfLogs[updatedLogIndex]=newLog
         setLogMessages(updatedListOfLogs)
     }
+    const isBattleReady=()=>{
+        if(listOfPartyMembers.length!==0 || listOfLogMessages!=={}){
+            return true
+        }
+        return false
+    }
 
     
     return(

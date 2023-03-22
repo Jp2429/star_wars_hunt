@@ -869,7 +869,13 @@ const CoruscantBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer
         }
         return false
     }
-
+    const isReady=()=>{
+        if(battleLog==={}){
+            return true
+        }
+        return false
+    }
+    const isItReady=isReady()
     return(
         <section id="battle-section">
             {!isComplete()?<section>
@@ -900,10 +906,16 @@ const CoruscantBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer
                         </div>
                         
                     </div>
+                    {!isItReady?
                     <div id="battle-log">
                         {displayBattleLogMessages}
                         
                     </div>
+                    :
+                    <div>
+                        <p>Loading</p>
+                    </div>
+                    }
                     <div id="party-details">
                         {player&&
                             <div id="player-stats">
