@@ -212,6 +212,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         //logUpdate
                         const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
                         newMessages.push(newMessage)
+                        const newSecondMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[secondEnemyToHit].name+" for "+damageDealt+" damage" }
+                        newMessages.push(newSecondMessage)
                         const newLogMessage = [{
                             _id: messages[0]._id,
                             messages: newMessages
@@ -230,6 +232,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         //logUpdate
                         const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
                         newMessages.push(newMessage)
+                        const newSecondMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[secondEnemyToHit].name+" for "+damageDealt+" damage" }
+                        newMessages.push(newSecondMessage)
                         const newLogMessage = [{
                             _id: messages[0]._id,
                             messages: newMessages
@@ -249,6 +253,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         //logUpdate
                         const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
                         newMessages.push(newMessage)
+                        const newSecondMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[secondEnemyToHit].name+" for "+damageDealt+" damage" }
+                        newMessages.push(newSecondMessage)
                         const newLogMessage = [{
                             _id: messages[0]._id,
                             messages: newMessages
@@ -267,6 +273,8 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         //logUpdate
                         const newMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[i].name+" for "+damageDealt+" damage" }
                         newMessages.push(newMessage)
+                        const newSecondMessage = { message: getTheCurrentDate()+ "You attacked " + missionEnemies[secondEnemyToHit].name+" for "+damageDealt+" damage" }
+                        newMessages.push(newSecondMessage)
                         const newLogMessage = [{
                             _id: messages[0]._id,
                             messages: newMessages
@@ -810,6 +818,20 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         })
     })
     
+    const getApCost=()=>{
+        let apCost=10
+        if(player.level>=1 && player.level<5){
+            return apCost=10
+        }else if(player.level>=5 && player.level<10){
+            return apCost=15
+        }else if(player.level>=10 && player.level<15){
+            return apCost=20
+        }else if(player.level>=15){
+            return apCost=25
+        }
+        return apCost
+    }
+    const apCost=getApCost()
 
     const displayEnemiesForm=missionEnemies.map((enemy)=>{
         return(
@@ -869,7 +891,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         </div>:
                         <div >
                             <button className="selected-buttons" onClick={onFireClick}>Fire</button>
-                            <button className="selected-buttons" onClick={onAbilityClick}>Ability</button>
+                            <button className="selected-buttons" onClick={onAbilityClick}>Ability (AP Cost: {apCost})</button>
                         </div>
                         }
                         <div >
