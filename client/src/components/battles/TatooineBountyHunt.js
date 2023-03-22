@@ -82,17 +82,19 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
             // 
         }
         //Companion Attack with delay
-        setTimeout(alliesTurn(newMessages),1000)
+        setTimeout(() => alliesTurn(newMessages),1000)
         //Enemy Attack with delay
-        setTimeout(enemiesTurn(newMessages),1000)
+        setTimeout(()=>enemiesTurn(newMessages),1500)
+        // enemiesTurn()
         //Delete dead companions from state
-        setTimeout(checkIfCompanionsAreAlive,1000)
+        setTimeout(checkIfCompanionsAreAlive,2000)
         //Delete dead enemies from state
-        setTimeout(checkIfEnemiesAreAlive,1000)
+        setTimeout(checkIfEnemiesAreAlive,3000)
         //Check if Player has won
-        setTimeout(checkIfPlayerHasWon,1000)
+        setTimeout(checkIfPlayerHasWon,3500)
         //Regain Action Points
-        setTimeout(regainAP,1000)
+        setTimeout(regainAP,4000)
+        // regainAP()
         const newLogMessage = [{
             _id: messages[0]._id,
             messages: newMessages
@@ -543,7 +545,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     }
     const regainAP=()=>{
         const newMessages = [...battleLog[0].messages]
-        const newPlayer=Object.assign({},player)
+        const newPlayer=Object.assign({},player) // {... plyaer}
         console.log("health",newPlayer.health)
         if(newPlayer.action_points<newPlayer.max_ap){
             newPlayer.action_points+=5
@@ -551,7 +553,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 newPlayer.action_points=newPlayer.max_ap
             }
             const newMessage = { message: getTheCurrentDate()+"You have regained 5 AP"}
-            newMessages.push(newMessage)
+            newMessages.push(newMessage) // TODO: what are we doing with this
             setPlayer(newPlayer)
         }
     }

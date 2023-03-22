@@ -34,6 +34,7 @@ const NewCharacter = ({createPlayer, listOfPartyMembers}) =>{
 
     const [selectedWeapon, setSelectedWeapon] = useState("")
 
+
     const onChange = (evt) =>{
         const newFormData = Object.assign({}, formData)
         newFormData[evt.target.name] = evt.target.value

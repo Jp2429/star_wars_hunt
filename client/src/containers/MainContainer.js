@@ -73,7 +73,32 @@ const MainContainer = () =>{
 
     },[])
 
-
+    const getTheCurrentDate=()=>{
+        const curDate=new Date()
+        let newMonth=curDate.getMonth()+1
+        newMonth.toString()
+        if(newMonth<10){
+            newMonth="0"+newMonth
+        }
+        let newMinutes=curDate.getMinutes()
+        newMinutes.toString()
+        if(newMinutes<10){
+            newMinutes="0"+newMinutes
+        }
+        let newDay=curDate.getDate()
+        newDay.toString()
+        if(newDay<10){
+            newDay="0"+newDay
+        }
+        let newHours=curDate.getHours()
+        newHours.toString()
+        if(newHours<10){
+            newHours="0"+newHours
+        }
+        
+        const formattedDate =newDay+"/"+newMonth+"/"+curDate.getFullYear()+" "+newHours+":"+newMinutes+" : "
+        return formattedDate.toString()
+    }
 
     const isReady = listOfEnemies.length && storeWeapons.length // etc 
 
@@ -88,7 +113,7 @@ const MainContainer = () =>{
             armour:newArmour
         }
        
-        const newMessage="You have created a character: "+player.name
+        const newMessage=getTheCurrentDate()+"You have created a character: "+player.name
         const newLog=
         {
             messages:[
@@ -103,10 +128,7 @@ const MainContainer = () =>{
         
         
         resetLog(newLog)
-        // .then(
-        //     postMessage(newLog)
-        //     .then(logData=>setLogMessages([...listOfLogMessages,newLog]))
-        // )
+
         resetParty(player)
        
        
