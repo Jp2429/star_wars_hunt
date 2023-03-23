@@ -9,7 +9,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
     const[companions,setCompanions]=useState([])
     const[targetedEnemy,setTargetEnemy]=useState({})
     const[battleLog,setBattleLog]=useState([])
-    const[checked,setChecked]=useState("")
 
 
     useEffect(()=>{
@@ -90,7 +89,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         
             
         console.log(healthToBeReturned)
-        // enemiesTurn()
         //Delete dead companions from state
         setTimeout(checkIfCompanionsAreAlive,1000)
         //Delete dead enemies from state
@@ -99,7 +97,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
         setTimeout(checkIfPlayerHasWon,1000)
         //Regain Action Points
         setTimeout(regainAP(healthToBeReturned.health),1000)
-        // regainAP()
         const newLogMessage = [{
             _id: messages[0]._id,
             messages: newMessages
@@ -307,7 +304,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         _id: messages[0]._id,
                         messages: newMessages
                     }]
-                    // setBattleLog(newLogMessage)
                     newEnemies[i].health-=damageDealt
                 }
             }else if(player.level>=5 && player.level<10){
@@ -325,7 +321,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         _id: messages[0]._id,
                         messages: newMessages
                     }]
-                    // setBattleLog(newLogMessage)
                     newEnemies[i].health-=damageDealt
                 }
             }else if(player.level>=10 && player.level<15){
@@ -343,7 +338,6 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         _id: messages[0]._id,
                         messages: newMessages
                     }]
-                    // setBattleLog(newLogMessage)
                     newEnemies[i].health-=damageDealt
                 }
             }else if(player.level>=15 ){
@@ -361,7 +355,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                         _id: messages[0]._id,
                         messages: newMessages
                     }]
-                    // setBattleLog(newLogMessage)
+                    
                     newEnemies[i].health-=damageDealt
                 }
             }
@@ -568,7 +562,7 @@ const TatooineBountyHunt=({messages,partyMembers,enemies,updateLog,updatePlayer}
                 newPlayer.action_points=newPlayer.max_ap
             }
             const newMessage = { message: getTheCurrentDate()+"You have regained 5 AP"}
-            newMessages.push(newMessage) // TODO: what are we doing with this
+            newMessages.push(newMessage) 
             
         }
         setPlayer(newPlayer)
