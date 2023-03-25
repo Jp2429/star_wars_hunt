@@ -3,8 +3,8 @@
     padding: 40px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size:cover;
-    height: 600px;
+    background-size: cover;
+    height: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;

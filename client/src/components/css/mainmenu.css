@@ -1,9 +1,10 @@
 #main-menu{
-background-image: url(./images/MosEisley.png);
-padding: 40px;
-background-repeat: no-repeat;
-background-attachment: fixed;
-height:600px;
+    background-image: url(./images/MosEisley.png);
+    padding: 40px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50vw;
 }
 
 #main-menu-div{

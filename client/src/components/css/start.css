@@ -3,7 +3,8 @@
     padding:40px;
     background-repeat:no-repeat;
     background-attachment:fixed;
-    height: 600px;
+    background-size: cover;
+    height: 50vw;
 
 }
 #start-menu>div{
