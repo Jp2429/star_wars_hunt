@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/star_wars_hunt/static/css/main.051b9806.css",
+    "main.js": "/star_wars_hunt/static/js/main.47b245cc.js",
+    "static/js/787.bcfa1fb6.chunk.js": "/star_wars_hunt/static/js/787.bcfa1fb6.chunk.js",
+    "static/media/KashyyykBattle2.png": "/star_wars_hunt/static/media/KashyyykBattle2.c488eb2ec79e7f9d32f3.png",
+    "static/media/MosEisley.png": "/star_wars_hunt/static/media/MosEisley.5b6969b06f06d6c91b43.png",
+    "static/media/TatooineBattle2.png": "/star_wars_hunt/static/media/TatooineBattle2.1a147c19af6863ae7f96.png",
+    "static/media/Spaceport.jpg": "/star_wars_hunt/static/media/Spaceport.cb0d6e86869223db1188.jpg",
+    "static/media/Cantina2.jpg": "/star_wars_hunt/static/media/Cantina2.b473e37b1dab7c4b08da.jpg",
+    "static/media/Store.jpg": "/star_wars_hunt/static/media/Store.f92bc9c93cd79ca950a9.jpg",
+    "static/media/CoruscantBattle.jpg": "/star_wars_hunt/static/media/CoruscantBattle.97a7a2da5428c3dace44.jpg",
+    "static/media/ThugElite.png": "/star_wars_hunt/static/media/ThugElite.1889fb2cb9be942f5908.png",
+    "static/media/Thug.png": "/star_wars_hunt/static/media/Thug.d8c9b7b05897ff358d48.png",
+    "static/media/Armoury.jpeg": "/star_wars_hunt/static/media/Armoury.d2ae42bad6adc303e79b.jpeg",
+    "static/media/start.jpeg": "/star_wars_hunt/static/media/start.73c1d65bf4d521e26347.jpeg",
+    "static/media/NabooBattle.jpg": "/star_wars_hunt/static/media/NabooBattle.4f2c39f04fc07db139c0.jpg",
+    "static/media/ThugSmall.png": "/star_wars_hunt/static/media/ThugSmall.2ba0e6ba04e20c3babb9.png",
+    "static/media/mandalore.ttf": "/star_wars_hunt/static/media/mandalore.4831be05e172b2944f01.ttf",
+    "static/media/Starjedi.ttf": "/star_wars_hunt/static/media/Starjedi.8d577dc1e1755c4860f3.ttf",
+    "static/media/BlackSunThug.png": "/star_wars_hunt/static/media/BlackSunThug.a546f730281e82afc8c1.png",
+    "static/media/BlackSunCaptain.png": "/star_wars_hunt/static/media/BlackSunCaptain.5c7af98f8e7cc85eda05.png",
+    "static/media/logo.svg": "/star_wars_hunt/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/star_wars_hunt/index.html",
+    "main.051b9806.css.map": "/star_wars_hunt/static/css/main.051b9806.css.map",
+    "main.47b245cc.js.map": "/star_wars_hunt/static/js/main.47b245cc.js.map",
+    "787.bcfa1fb6.chunk.js.map": "/star_wars_hunt/static/js/787.bcfa1fb6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.051b9806.css",
+    "static/js/main.47b245cc.js"
+  ]
+}
